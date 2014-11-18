@@ -1,0 +1,6 @@
+<h1>Communities</h1>
+<ul>
+  <% @communities.each do |community| %>
+    <li><%= link_to community.name, pick_community_path(:id => community), method: 'post' %></li>
+  <% end%>
+</ul>

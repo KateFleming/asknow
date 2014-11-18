@@ -1,0 +1,17 @@
+<h1>Login</h1>
+<%= form_tag session_login_path do %>
+  <% if @login_errors %>
+    <h2><%= @login_errors %></h2>
+  <% end %>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div>
+    <%= submit_tag "Login" %>
+  </div>
+<% end %>
