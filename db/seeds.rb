@@ -24,3 +24,9 @@ Community.create([
         longitude: -122.900695
     }
 ])
+
+# Create feeds
+Feed.create({
+    tag: 'trending',
+    name: 'Trending'
+})

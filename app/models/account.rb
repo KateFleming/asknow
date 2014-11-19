@@ -5,7 +5,10 @@ class Account < ActiveRecord::Base
   
   # Relationships
   belongs_to :community
+  has_many :feeds
   has_many :questions
+  has_many :answers
+  has_many :votes
   
   def member?
     type == 'Member'

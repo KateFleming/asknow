@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118073622) do
+ActiveRecord::Schema.define(version: 20141118231558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20141118073622) do
 
   add_index "accounts", ["community_id"], name: "index_accounts_on_community_id", using: :btree
 
+  create_table "answers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "entry"
+    t.integer  "account_id"
+    t.integer  "question_id"
+  end
+
   create_table "communities", force: true do |t|
     t.string   "name"
     t.float    "latitude"
@@ -35,5 +43,46 @@ ActiveRecord::Schema.define(version: 20141118073622) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "feeds", force: true do |t|
+    t.string   "tag"
+    t.string   "name"
+    t.boolean  "private"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feeds", ["account_id"], name: "index_feeds_on_account_id", using: :btree
+
+  create_table "question_banks", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_banks", ["feed_id"], name: "index_question_banks_on_feed_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.string   "entry"
+    t.string   "keywords"
+    t.integer  "community_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "account_id"
+  end
+
+  add_index "questions", ["community_id"], name: "index_questions_on_community_id", using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "answer_id"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["account_id"], name: "index_votes_on_account_id", using: :btree
+  add_index "votes", ["answer_id"], name: "index_votes_on_answer_id", using: :btree
 
 end

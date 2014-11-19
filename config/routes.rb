@@ -24,7 +24,12 @@ Rails.application.routes.draw do
   # Session
   get   'session/login'    => 'session#login', as: 'session_login'
   post  'session/login'    => 'session#authenticate'
-  get  'session/logout'   => 'session#logout', as: 'session_logout'
+  get   'session/logout'   => 'session#logout', as: 'session_logout'
+  
+  # Question
+  get   'question'      => 'question#index'
+  post  'question'      => 'question#ask', as: 'question_ask'
+  get   'question/:id'  => 'question#show', as: 'question_show'
 
   root  'landing#index'
 end

@@ -14,6 +14,7 @@
 </div>
 <nav>
   <ul>
+    <li><%= link_to "Ask a Question", question_path %></li>
     <li><%= link_to "Communities", community_path %></li>
     <li><%= link_to "Feed", feed_path %></li>
     <% if current_account.guest? %>
