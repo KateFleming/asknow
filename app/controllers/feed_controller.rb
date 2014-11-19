@@ -3,4 +3,8 @@ class FeedController < ApplicationController
   
   def index
   end
+  
+  def recent
+    @questions = Question.all
+  end
 end

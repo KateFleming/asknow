@@ -9,7 +9,12 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :question_banks
   
+  # Takes data and converts to an array
   def tags
-    keywords.split(",")
+    if keywords
+      keywords.split(",")
+    else
+      []
+    end
   end
 end

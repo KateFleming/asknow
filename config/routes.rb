@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post  'community/pick'  => 'community#pick', as: 'pick_community'
   
   # Feed
-  get   'feed'  => 'feed#index'
+  get   'feed'    => 'feed#index'
+  get   'recent'  => 'feed#recent', as: 'recent'
   
   # Account
   get   'account'    => 'account#panel', as: 'account_panel'
@@ -30,6 +31,12 @@ Rails.application.routes.draw do
   get   'question'      => 'question#index'
   post  'question'      => 'question#ask', as: 'question_ask'
   get   'question/:id'  => 'question#show', as: 'question_show'
+  
+  # Answer
+  post  'question/:id/answer'   => 'answer#new', as: 'answer_new'
+  
+  # Vote
+  post  'answer/:id/vote'   => 'vote#cast', as: 'vote_cast'
 
   root  'landing#index'
 end

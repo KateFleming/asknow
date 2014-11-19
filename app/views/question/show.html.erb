@@ -4,3 +4,36 @@
     <%= tag %>
   <% end %>
 </p>
+<div>
+  <% @vote = @vote || Vote.new %>
+  <% if @vote.errors.any? %>
+    <div>
+      <ul>
+        <% @vote.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @question.answers.each do |answer| %>
+    <p>
+      <span><%= answer.entry %>(<%= answer.votes.count %>)</span>
+      <%= link_to "Vote", vote_cast_path(answer.id), method: :post %>
+    </p>
+  <% end %>
+</div>
+<h2>Suggest an Answer</h2>
+<%= form_for @answer, :url => answer_new_path(@question) do |f| %>
+  <% if @answer.errors.any? %>
+    <div>
+      <ul>
+        <% @answer.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :entry %>
+  <%= f.text_field :entry %>
+  <%= f.submit "Submit Answer" %>
+<% end %>
