@@ -13,7 +13,12 @@ class Account < ActiveRecord::Base
   def member?
     type == 'Member'
   end
+  
   def guest?
     type == 'Guest'
+  end
+  
+  def primary_feed
+    Feed.find_by(account: self, primary: true)
   end
 end

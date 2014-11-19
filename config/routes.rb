@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   post  'community/pick'  => 'community#pick', as: 'pick_community'
   
   # Feed
-  get   'feed'    => 'feed#index'
-  get   'recent'  => 'feed#recent', as: 'recent'
+  get   'feed/:tag'    => 'feed#show', as: 'feed'
+  get   'recent'       => 'feed#recent', as: 'recent'
+  post  'feed/add'     => 'feed#add', as: 'feed_add'
   
   # Account
   get   'account'    => 'account#panel', as: 'account_panel'
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   # Session
   get   'session/login'    => 'session#login', as: 'session_login'
   post  'session/login'    => 'session#authenticate'
-  get   'session/logout'   => 'session#logout', as: 'session_logout'
+  post   'session/logout'   => 'session#logout', as: 'session_logout'
   
   # Question
   get   'question'      => 'question#index'

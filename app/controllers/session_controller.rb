@@ -8,7 +8,7 @@ class SessionController < ApplicationController
     if member
       session[:account_id] = member.id
       session[:account_type] = member.type
-      redirect_to feed_path
+      redirect_to feed_path('trending')
     else
       @login_errors = "Could not authenticate"
       render 'login'
