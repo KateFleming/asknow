@@ -26,9 +26,10 @@ class FeedController < ApplicationController
     else
       @page = 1
     end
-    total = @questions.count
-    group = 10
-    @questions.slice(group * @page)
+    
+    items_per_page = 10
+    starting = items_per_page * (@page - 1)
+    @questions = @questions.slice(starting, items_per_page)
   end
   
   # Get all recent questions

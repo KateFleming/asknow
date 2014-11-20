@@ -1,6 +1,3 @@
-<% if flash[:not_found_error] %>
-
-<% end %>
 <h1><%= @question.entry %></h1>
 <h2>Rating: <%= @question.rating %></h2>
 <p>
@@ -23,6 +20,9 @@
     <p>
       <span><%= answer.entry %>(<%= answer.votes.count %>)</span>
       <%= link_to "Vote", vote_cast_path(answer.id), method: :post %>
+      <% if current_account.owns?(answer) %>
+        | <%= link_to "Delete", answer_delete_path(answer.id), method: :delete, :data => {confirm: "You sure?"} %>
+      <% end %>
     </p>
   <% end %>
 </div>
@@ -45,4 +45,12 @@
   <%= f.label :entry %>
   <%= f.text_field :entry, value: '' %>
   <%= f.submit "Submit Answer" %>
+<% end %>
+<% if current_account.owns?(@question) %>
+  <%= link_to "Delete Question", 
+  question_delete_path(@question), 
+  :method => "delete", 
+  :data => {
+    confirm: "You sure?" 
+  } %>
 <% end %>
