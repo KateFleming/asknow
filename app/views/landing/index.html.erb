@@ -1,8 +1,31 @@
-<h1>Ask Now</h1>
-<h2>Landing</h2>
-<h3>Choose a Community</h3>
+<main class="landing">
+<!--<div class="logo">-->
+<img class="logo" src="/assets/logo.svg"/>
+<!--</div>-->
+<div class="container">
+  <div class="slogan">
+    <h1 class="landingslogan">Get <span class="bold">real-time </span>answers from <span class="bold">real </span>people </h1>
+    <h3>current events, opinions, local knowledge</h3>
+  </div>
+<div class="pickcity">
+    <h2>Pick a city</h2>
+    <% @communities.each do |community| %>
+    <%= link_to community.name, pick_community_path(:id => community), method: 'post', class: "landingbutton" %>
+  <% end %>
+    <h4><a class="city" href="#">Want to see your city?</a></h4>
+  </div>
+</div>
+<footer class="landingfooter">
+  <h5><a class="learn" href="#">Learn More</a></h5>
+  <h5><%=link_to "Login", session_login_path, class:"login" %></h5>
+</footer>
+<div class="community">
+<!--
 <ul>
   <% @communities.each do |community| %>
     <li><%= link_to community.name, pick_community_path(:id => community), method: 'post', class: "landing" %></li>
   <% end%>
 </ul>
+-->
+</div>
+</main>

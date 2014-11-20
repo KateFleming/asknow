@@ -2,8 +2,26 @@
   display:inline;
   color:red;
 }
+
 a:link, a:visited {
   text-decoration:none;
   text-transform:uppercase;
   font-weight:bold;
+}
+@font-face {
+  font-family: Glober;
+}
+//colors
+$color_romantic_approx: rgb(255, 203, 186);
+$color_persimmon_approx: rgb(244, 93, 76);
+$color_thunderbird_approx: rgb(188, 45, 29);
+
+//fonts
+$font_1: Glober;
+body {
+  font-family:$font_1;
+  margin:0;
+}
+html {
+  margin:0;
 }

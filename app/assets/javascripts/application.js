@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
 $(document).ready(function(){
   var menu = $('.menu');
   var openButton = $('.open-menu');

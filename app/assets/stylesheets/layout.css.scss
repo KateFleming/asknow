@@ -52,3 +52,24 @@ nav {
     }
   }
 }
+
+.header {
+  width:100%;
+  background-color: rgb(244, 93, 76);
+  * {
+//    border:1px solid red;
+  }
+
+  a {
+    text-decoration:none;
+    color:rgb(255, 203, 186);
+    margin-bottom:2em;
+    clear:both;
+    
+  }
+  .logo {
+    height:100%;
+    display:inline;
+//    float:left;
+  }
+}
