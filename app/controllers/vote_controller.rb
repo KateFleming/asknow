@@ -5,7 +5,7 @@ class VoteController < ApplicationController
     @vote = Vote.new(account: current_account, answer: @answer)
     
     if @vote.save
-      redirect_to question_show_path(@question)
+      redirect_to :back
     else
       @page_errors = "You've already voted on that answer"
       render "question/show"
