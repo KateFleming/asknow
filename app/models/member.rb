@@ -5,6 +5,7 @@ class Member
     email_uniqueness_validator.validate(account)
     password_presence_validator.validate(account)
     password_confirmation_validator.validate(account)
+    password_length_validator.validate(account)
   end
   private
   def name_presence_validator
@@ -30,6 +31,11 @@ class Member
   def password_confirmation_validator
     @password_confirmation_validator ||= ActiveModel::Validations::ConfirmationValidator.new(
           attributes: :password, :class => Account
+    )
+  end
+  def password_length_validator
+    @password_length_validator ||= ActiveModel::Validations::LengthValidator.new(
+          attributes: :password, :minimum => 5, :class => Account
     )
   end
 end

@@ -63,7 +63,7 @@ class FeedController < ApplicationController
     if @question_bank.save
       redirect_to feed_show_path(@feed.id)
     else
-      @page_errors = "You already have that question in your feed"
+      flash[:error] = "You already have that question in your feed"
       render "question/show"
     end
   end

@@ -7,7 +7,7 @@ class VoteController < ApplicationController
     if @vote.save
       redirect_to :back
     else
-      @page_errors = "You've already voted on that answer"
+      flash[:error] = "You've already voted on that answer"
       render "question/show"
     end
   end

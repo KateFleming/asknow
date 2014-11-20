@@ -7,11 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="page-error">
-  <% if defined? @page_errors %>
-    <%= @page_errors %>
-  <% end %>
-</div>
+<% if flash.any? %>
+  <ul class="page-notices">
+    <% flash.each do |notice| %>
+      <li clas="<%= notice[0] %>"><%= notice[1] %></li>
+    <% end %>
+  </ul>
+<% end %>
 <% if current_account.community %>
   <div><%= link_to current_account.community.name, community_path %></div>
 <% else %>

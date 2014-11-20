@@ -1,5 +1,6 @@
 class QuestionController < ApplicationController
   before_filter :require_community
+  
   def index
     @question = Question.new
   end
@@ -31,10 +32,14 @@ class QuestionController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @vote = Vote.new
+    
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "We couldn't find that question"
+      redirect_to trending_path
   end
     
   private
-    def question_params
-      params.require(:question).permit(:entry)
-    end
+  def question_params
+    params.require(:question).permit(:entry)
+  end
 end

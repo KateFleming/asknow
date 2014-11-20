@@ -8,7 +8,7 @@ class AnswerController < ApplicationController
     if @answer.save
       redirect_to question_show_path(params[:id])
     else
-      @page_errors = "Could not save answer"
+      flash[:error] = "Could not save answer"
       render "question/show"
     end
     

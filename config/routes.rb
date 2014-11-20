@@ -31,9 +31,9 @@ Rails.application.routes.draw do
   post   'session/logout'   => 'session#logout', as: 'session_logout'
   
   # Question
-  get   'question'      => 'question#index'
-  post  'question'      => 'question#ask', as: 'question_ask'
-  get   'question/:id'  => 'question#show', as: 'question_show'
+  get   'question'            => 'question#index'
+  post  'question'            => 'question#ask', as: 'question_ask'
+  get   'question/:id'        => 'question#show', as: 'question_show'
   
   # Answer
   post  'question/:id/answer'   => 'answer#new', as: 'answer_new'
