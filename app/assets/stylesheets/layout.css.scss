@@ -1,0 +1,26 @@
+.header {
+  width:100%;
+  background-color: rgb(244, 93, 76);
+  * {
+//    border:1px solid red;
+  }
+.hamburger {
+  float:right;
+  margin-top:2em;
+  margin-right:1.5em;
+  display:inline;
+  clear:both;
+}
+  a {
+    text-decoration:none;
+    color:rgb(255, 203, 186);
+    margin-bottom:2em;
+    clear:both;
+    
+  }
+  .logo {
+    height:100%;
+    display:inline;
+//    float:left;
+  }
+}
