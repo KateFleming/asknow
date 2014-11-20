@@ -1,7 +1,7 @@
 <% if @feed.private && @feed.account != current_account %>
   <h1>This feed doesn't belong to you. Bummer.</h1>
 <% else %>
-  <h1><%= @feed.name %> Feed</h1>
+  <h1><%= @feed.name %></h1>
   <div>
     <%= render 'questions' %>
   </div>

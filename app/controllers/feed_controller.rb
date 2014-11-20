@@ -11,12 +11,19 @@ class FeedController < ApplicationController
     @questions = @feed.question_banks.collect{ |bank| bank.question }
   end
   
+  # What's hot
   def trending
-    @questions = Question.all.sort_by do |question|
+    @questions = Question.community(current_community)
+    @questions = @questions.sort_by do |question|
       question.rating.to_i
     end
     
     @questions.reverse!.take(@questions.count * 0.1)
+  end
+  
+  # Get all recent questions
+  def recent
+    @questions = Question.community(current_community).reverse
   end
   
   def account
@@ -59,9 +66,5 @@ class FeedController < ApplicationController
       @page_errors = "You already have that question in your feed"
       render "question/show"
     end
-  end
-  
-  def recent
-    @questions = Question.all.reverse
   end
 end

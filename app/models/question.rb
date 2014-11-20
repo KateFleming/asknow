@@ -27,4 +27,9 @@ class Question < ActiveRecord::Base
     # Return a count of votes and answers
     answers.count + votes
   end
+  
+  # Finds by community
+  def self.community(place)
+    self.where(community: place)
+  end
 end
