@@ -1,4 +1,4 @@
-<h1>Hey, <%= current_account.name %></h1>
+<h1>How's it going, <%= current_account.name %>?</h1>
 <% if !current_account.guest? %>
   <%= link_to "Logout", session_logout_path, method: "post" %>
 <% else %>
