@@ -6,26 +6,22 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<div class="page-error">
-  <% if defined? @page_errors %>
-    <%= @page_errors %>
-  <% end %>
-</div>
-<nav>
-  <ul>
-    <li><%= link_to "Communities", community_path %></li>
-    <li><%= link_to "Feed", feed_path %></li>
-    <% if current_account.guest? %>
-    <li><%= link_to "New Account", member_new_path %></li>
-    <li><%= link_to "Login", session_login_path %></li>
-    <% else %>
-    <li><%= link_to "Panel", account_panel_path %></li>
-    <li><%= link_to "Logout", session_logout_path, method: "post"  %></li>
+<body class="application-layout">
+<% if flash.any? %>
+  <ul class="page-notices">
+    <% flash.each do |notice| %>
+      <li clas="<%= notice[0] %>"><%= notice[1] %></li>
     <% end %>
   </ul>
-</nav>
-<%= yield %>
+<% end %>
+<% if current_account.community %>
+  <div><%= link_to current_account.community.name, community_path %></div>
+<% else %>
+  <div><%= link_to "Pick a Community", community_path %></div>
+<% end %>
 
+<%= render 'layout/nav' %>
+
+<%= yield %>
 </body>
 </html>

@@ -8,7 +8,7 @@ module SessionHelper
     if session[:account_id]
       @current_account = Account.find(session[:account_id])
     else
-      @current_account = Guest.create
+      @current_account = Account.create(account_type: "guest")
       session[:account_id] = @current_account.id
     end
     @current_account

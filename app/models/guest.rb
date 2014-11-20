@@ -1,4 +1,6 @@
-class Guest < Account
+class Guest
+  def validate_account(account)
+  end
   def name
     "Guest"
   end

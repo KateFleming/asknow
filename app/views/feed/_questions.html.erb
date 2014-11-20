@@ -1,0 +1,10 @@
+<% @questions.each do |question| %>
+  <div>
+    <h2><%= link_to question.entry, question_show_path(question) %></h2>
+    <ul>
+      <% question.answers.each do |answer| %>
+        <li><%= link_to answer.entry, vote_cast_path(answer.id), method: :post %>(<%= answer.votes.count %>)</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

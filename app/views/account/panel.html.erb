@@ -1,7 +1,9 @@
-<h1>Hey, <%= current_account.name %></h1>
+<h1>How's it going, <%= current_account.name %>?</h1>
 <% if !current_account.guest? %>
   <%= link_to "Logout", session_logout_path, method: "post" %>
 <% else %>
  <%= link_to "Login", session_login_path %>
 <% end %>
 <p>Your current community is <%= current_account.community.name %></p>
+<h2>Questions You've Asked</h2>
+<%= render 'feed/questions' %>
