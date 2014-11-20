@@ -19,8 +19,11 @@
     <li>Feeds</li>
     <li>
       <ul>
+        <% if current_account.member? %>
+        <li><%= link_to "My Feed", feed_path %></li>
+        <% end %>
         <li><%= link_to "Recent", recent_path %></li>
-        <li><%= link_to "Trending", feed_path("trending") %></li>
+        <li><%= link_to "Trending", trending_path %></li>
       </ul>
     </li>
     <% if current_account.guest? %>
@@ -32,6 +35,7 @@
     <% end %>
   </ul>
 </nav>
+
 <%= yield %>
 
 </body>

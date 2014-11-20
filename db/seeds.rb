@@ -26,7 +26,3 @@ Community.create([
 ])
 
 # Create feeds
-Feed.create({
-    tag: 'trending',
-    name: 'Trending'
-})

@@ -5,11 +5,12 @@ class Feed < ActiveRecord::Base
   
   # Relationships
   belongs_to :account
-  has_many :question_banks
+  has_many :question_banks, dependent: :destroy
   
+  # Validation
   # Each account can only have one primary feed
   def one_primary_per_account
-    if Feed.find_by(account: account, primary: true)
+    if Feed.where(account: account, primary: true).count > 1
       errors.add(:tag, "can't have more than one primary feed")
     end
   end

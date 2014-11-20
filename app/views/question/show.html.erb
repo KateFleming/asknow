@@ -1,4 +1,5 @@
 <h1><%= @question.entry %></h1>
+<h2>Rating: <%= @question.rating %></h2>
 <p>
   <% @question.tags.each do |tag| %>
     <%= tag %>
@@ -27,7 +28,8 @@
   <%= submit_tag "Add to Feed" %>
 <% end %>
 <h2>Suggest an Answer</h2>
-<%= form_for @answer, :url => answer_new_path(@question) do |f| %>
+<% @answer = @answer || Answer.new %>
+<%= form_for @answer, :url => answer_new_path(@question), :method => "post" do |f| %>
   <% if @answer.errors.any? %>
     <div>
       <ul>
@@ -38,6 +40,6 @@
     </div>
   <% end %>
   <%= f.label :entry %>
-  <%= f.text_field :entry %>
+  <%= f.text_field :entry, value: '' %>
   <%= f.submit "Submit Answer" %>
 <% end %>

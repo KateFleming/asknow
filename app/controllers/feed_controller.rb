@@ -7,6 +7,24 @@ class FeedController < ApplicationController
     if !@feed
       @feed = Feed.find(params[:tag])
     end
+    
+    @questions = @feed.question_banks.collect{ |bank| bank.question }
+  end
+  
+  def trending
+    @questions = Question.all.sort_by do |question|
+      question.rating.to_i
+    end
+    
+    @questions.reverse!.take(@questions.count * 0.1)
+  end
+  
+  def account
+    if current_account.primary_feed
+      redirect_to feed_show_path(current_account.primary_feed)
+    end
+    
+    @feed = Feed.new
   end
   
   def add
@@ -36,13 +54,14 @@ class FeedController < ApplicationController
     @question_bank = QuestionBank.new(feed: @feed, question: @question)
     
     if @question_bank.save
-      redirect_to feed_path(@feed.id)
+      redirect_to feed_show_path(@feed.id)
     else
-      render question_show_path(@question)
+      @page_errors = "You already have that question in your feed"
+      render "question/show"
     end
   end
   
   def recent
-    @questions = Question.all
+    @questions = Question.all.reverse
   end
 end

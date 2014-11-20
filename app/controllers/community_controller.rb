@@ -6,7 +6,7 @@ class CommunityController < ApplicationController
     @account = current_account
     
     if @account.update_attribute(:community_id, params[:id])
-      redirect_to feed_path
+      redirect_to trending_path('trending')
     else
       @page_error = "There was an error choosing a community"
       logger.debug("Error choosing community")

@@ -11,16 +11,18 @@ Rails.application.routes.draw do
   post  'community/pick'  => 'community#pick', as: 'pick_community'
   
   # Feed
-  get   'feed/:tag'    => 'feed#show', as: 'feed'
-  get   'recent'       => 'feed#recent', as: 'recent'
-  post  'feed/add'     => 'feed#add', as: 'feed_add'
+  get   'feed'           => 'feed#account', as: 'feed'
+  get   'feed/:tag'      => 'feed#show', as: 'feed_show'
+  get   'recent'         => 'feed#recent', as: 'recent'
+  post  'feed/add'       => 'feed#add', as: 'feed_add'
+  get   'trending'       => 'feed#trending', as: 'trending'
   
   # Account
-  get   'account'    => 'account#panel', as: 'account_panel'
+  get   'account'           => 'account#panel', as: 'account_panel'
   
   # Member
   get   'member/new'       => 'member#new', as: 'member_new'
-  post  'member/new'       => 'member#create'
+  post  'member/new'       => 'member#create', as: 'member_create'
   get   'member/success'   => 'member#success'
   
   # Session

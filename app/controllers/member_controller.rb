@@ -4,14 +4,22 @@ class MemberController < ApplicationController
   end
   
   def create
-
     # Create a new member
-    @member = Member.new(member_params)
-    
-    if @member.save
-      redirect_to action: 'success'
-    else
-      render :new
+    if current_account.member?
+      redirect_to account_panel_path
+    elsif current_account.guest?
+      # If they're a guest, convert to a member
+      @member = current_account.becomes!(Member)
+      @member.assign_attributes(member_params)
+      
+      logger.info("Member: #{@member.inspect}")
+      
+      # Save the new member
+      if @member.save
+        redirect_to member_save_path
+      else
+        render :new
+      end
     end
   end
   
