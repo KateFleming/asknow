@@ -1,6 +1,6 @@
 class MemberController < ApplicationController
   def new
-    @member = Member.new
+    @member = Account.new
   end
   
   def create
@@ -9,14 +9,13 @@ class MemberController < ApplicationController
       redirect_to account_panel_path
     elsif current_account.guest?
       # If they're a guest, convert to a member
-      @member = current_account.becomes!(Member)
+      @member = current_account
+      @member.account_type = "member"
       @member.assign_attributes(member_params)
-      
-      logger.info("Member: #{@member.inspect}")
       
       # Save the new member
       if @member.save
-        redirect_to member_save_path
+        redirect_to account_panel_path
       else
         render :new
       end
@@ -29,6 +28,6 @@ class MemberController < ApplicationController
   
   private
     def member_params
-      params.require(:member).permit(:name, :email, :password, :password_confirmation)
+      params.require(:account).permit(:name, :email, :password, :password_confirmation)
     end
 end

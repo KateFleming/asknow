@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
   # Use secure password, but only require when creating a member
   has_secure_password validations: false
-  validates :type, presence: true
+  validate :type_specific_validation
   
   # Relationships
   belongs_to :community
@@ -10,12 +10,27 @@ class Account < ActiveRecord::Base
   has_many :answers
   has_many :votes
   
+  def type
+    case account_type
+    when 'member'
+      Member.new
+    when 'guest'
+      Guest.new
+    else
+      raise "Unknown account type"
+    end
+  end
+  
+  def type_specific_validation
+    type.validate_account(self)
+  end
+  
   def member?
-    type == 'Member'
+    account_type == 'member'
   end
   
   def guest?
-    type == 'Guest'
+    account_type == 'guest'
   end
   
   def primary_feed
