@@ -1,6 +1,11 @@
 <header class="header">
-  <wrapper>
-    <a href="<%= trending_path %>"><img class="logo" src="/assets/logo-small.svg"/></a>
-    <%= link_to current_community.name, community_path %>
-  </wrapper>
+  <a class="logo" href="<%= trending_path %>">
+    <img src="/assets/logo-small.svg"/>
+  </a>
+  <% if current_account.community %>
+    <%= link_to current_community.name, community_path, class: "community-link" %>
+  <% else %>
+    <%= link_to "Pick a Community", community_path, class: "community-link" %>
+  <% end %>
+  
 </header>
