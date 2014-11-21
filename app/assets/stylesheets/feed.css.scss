@@ -15,3 +15,16 @@
     }
   }
 }
+.pages {
+  margin:20px 0;
+  a {
+    font-size:1.2em;
+   
+    padding:8px 15px 0 15px;
+    background:$baseColor;
+  }
+  .current-page {
+    background:$liveColor;
+    color:white;
+  }
+}

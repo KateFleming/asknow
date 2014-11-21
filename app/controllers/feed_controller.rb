@@ -9,6 +9,7 @@ class FeedController < ApplicationController
     end
     
     @questions = @feed.question_banks.collect{ |bank| bank.question }
+    @questions = Feed.filter_by_page(params[:page], @questions)
   end
   
   # What's hot
@@ -21,24 +22,17 @@ class FeedController < ApplicationController
     end
     
     @questions.reverse!.take(@questions.count * 0.1)
-    
-    # Pagination
-    if params[:page]
-      @page = params[:page]
-    else
-      @page = 1
-    end
-    
-    items_per_page = 10
-    starting = items_per_page * (@page - 1)
-    @questions = @questions.slice(starting, items_per_page)
+    page_data = Feed.filter_by_page(params[:page], @questions)
+    @questions = page_data[:items]
+    @total_pages = page_data[:total_pages]
+    @current_page = page_data[:current_page]
   end
   
   # Get all recent questions
   def recent
     @question = Question.new
-    
     @questions = Question.community(current_community).reverse
+    @questions = Feed.filter_by_page(params[:page], @questions)
   end
   
   def account
