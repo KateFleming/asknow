@@ -22,22 +22,15 @@ $font_1: Glober;
 body {
   font-family:$font_1;
   margin:0;
-}
-html {
-  margin:0;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body {
   font-size: 1em;
   line-height: 1.5em;
   background: #F9F9F9;
   margin: 0 auto;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 section {
