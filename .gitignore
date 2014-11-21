@@ -1,5 +1,5 @@
 .DS_Store
-database.yml
+# database.yml
 *.rbc
 capybara-*.html
 .rspec
