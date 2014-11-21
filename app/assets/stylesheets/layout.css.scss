@@ -1,3 +1,5 @@
+$navHeight: 60px;
+
 nav {
   position:fixed;
   background:#da3f2d;
@@ -6,29 +8,25 @@ nav {
   height:100%;
   width:300px;
   
-  .open-menu {
-    background: #333;
-    color:white;
-    z-index:100;
+  .open-menu, .close-menu {
     position:absolute;
-    left:-2em;
-    font-size:2em;
-    width:2em;
-    height:2em;
-    border:none;
     top:0;
+    font-size:2em;
+    width:$navHeight;
+    height: $navHeight;
     cursor:pointer;
+    color:white;
+    border:none;
+    background: #333;
+  }
+  
+  .open-menu {
+    z-index:100;
+    left:-$navHeight;
   }
   
   .close-menu {
-    position:absolute;
-    top:0;
     right:0;
-    padding:20px;
-    background:#333;
-    color:white;
-    font-size:1.5em;
-    cursor:pointer;
   }
   
   ul {
@@ -54,11 +52,9 @@ nav {
 }
 
 .header {
+  height:$navHeight;
   width:100%;
   background-color: rgb(244, 93, 76);
-  * {
-//    border:1px solid red;
-  }
 
   a {
     text-decoration:none;
@@ -69,7 +65,6 @@ nav {
   }
   .logo {
     height:100%;
-    display:inline;
-//    float:left;
+    display:inline-block;
   }
 }

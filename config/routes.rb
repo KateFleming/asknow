@@ -11,23 +11,23 @@ Rails.application.routes.draw do
   post  'community/pick'  => 'community#pick', as: 'pick_community'
   
   # Feed
-  get   'feed'           => 'feed#account', as: 'feed'
-  get   'feed/:tag'      => 'feed#show', as: 'feed_show'
-  get   'recent'         => 'feed#recent', as: 'recent'
-  post  'feed/add'       => 'feed#add', as: 'feed_add'
-  get   'trending'       => 'feed#trending', as: 'trending'
+  get    'feed'           => 'feed#account', as: 'feed'
+  get    'feed/:tag'      => 'feed#show', as: 'feed_show'
+  get    'recent'         => 'feed#recent', as: 'recent'
+  post   'feed/add'       => 'feed#add', as: 'feed_add'
+  get    'trending'       => 'feed#trending', as: 'trending'
   
   # Account
-  get   'account'           => 'account#panel', as: 'account_panel'
+  get    'account'           => 'account#panel', as: 'account_panel'
   
   # Member
-  get   'member/new'       => 'member#new', as: 'member_new'
-  post  'member/new'       => 'member#create', as: 'member_create'
-  get   'member/success'   => 'member#success'
+  get    'member/new'       => 'member#new', as: 'member_new'
+  post   'member/new'       => 'member#create', as: 'member_create'
+  get    'member/success'   => 'member#success'
   
   # Session
-  get   'session/login'    => 'session#login', as: 'session_login'
-  post  'session/login'    => 'session#authenticate'
+  get    'session/login'    => 'session#login', as: 'session_login'
+  post   'session/login'    => 'session#authenticate'
   post   'session/logout'   => 'session#logout', as: 'session_logout'
   
   # Question
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   delete 'answer/:id/delete'     => 'answer#delete', as: 'answer_delete'
   
   # Vote
-  post  'answer/:id/vote'   => 'vote#cast', as: 'vote_cast'
+  post   'answer/:id/vote'   => 'vote#cast', as: 'vote_cast'
 
-  root  'landing#index'
+  root   'landing#index'
 end

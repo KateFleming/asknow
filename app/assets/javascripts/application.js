@@ -11,22 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
-$(document).ready(function(){
-  var menu = $('.menu');
-  var openButton = $('.open-menu');
-  openButton.click(function(){
-    menu.css({
-      right: 0
-    });
-    $(this).hide();
-  });
-  $('.close-menu').click(function(){
-    menu.css({
-      right: "-300px"
-    });
-    openButton.show();
-  });
-});
+//= require turbolinks
