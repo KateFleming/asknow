@@ -1,70 +1,39 @@
 <main class="show">
-<wrapper>
-<%= render 'feed/question' %>
-
-<!--
-<h1><%= @question.entry %></h1>
-<h2>Rating: <%= @question.rating %></h2>
--->
-<p>
-  <% @question.tags.each do |tag| %>
-    <%= tag %>
+<wrapper class="show-question">
+  <%= render 'feed/question', :show_all => true %>
+  <div>
+    <% @question.tags.each do |tag| %>
+      <%= tag %>
+    <% end %>
+  </div>
+  <article class="question">
+  <% @answer = @answer || Answer.new %>
+  <%= form_for @answer, :url => answer_new_path(@question), :method => "post" do |f| %>
+    <% if @answer.errors.any? %>
+      <div>
+        <ul>
+          <% @answer.errors.full_messages.each do |msg| %>
+             <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.text_field :entry, value: '', placeholder: "Suggest an Answer..." %>
+    <%= f.submit "Submit Answer" %>
   <% end %>
-</p>
-<!--
-<div>
-  <% @vote = @vote || Vote.new %>
-  <% if @vote.errors.any? %>
-    <div>
-      <ul>
-        <% @vote.errors.full_messages.each do |msg| %>
-           <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% @question.answers.each do |answer| %>
-    <p>
-      <span class="useranswer"><%= answer.entry %>(<%= answer.votes.count %>)</span>
-      <%= link_to "Vote", vote_cast_path(answer.id), method: :post %>
-      <% if current_account.owns?(answer) %>
-        | <%= link_to "Delete", answer_delete_path(answer.id), method: :delete, :data => {confirm: "You sure?"} %>
-      <% end %>
-    </p>
-  <% end %>
-</div>
--->
-
-<article class="question">
-<%= form_tag feed_add_path do %>
-  <%= hidden_field_tag :question_id, @question.id %>
-  <%= submit_tag "Add to Feed" %>
-<% end %>
-<h2 class="suggest">Suggest an Answer</h2>
-<% @answer = @answer || Answer.new %>
-<%= form_for @answer, :url => answer_new_path(@question), :method => "post" do |f| %>
-  <% if @answer.errors.any? %>
-    <div>
-      <ul>
-        <% @answer.errors.full_messages.each do |msg| %>
-           <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= f.label :entry %>
-  <%= f.text_field :entry, value: '' %>
-  <%= f.submit "Submit Answer" %>
-<% end %>
-<% if current_account.owns?(@question) %>
-  <%= link_to "Delete Question", 
-  question_delete_path(@question), class:"del", 
-  :method => "delete", 
-  :data => {
-    confirm: "You sure?" 
-  } %>
+  <% if current_account.owns?(@question) %>
+    <%= link_to "Delete Question", 
+    question_delete_path(@question), class:"del", 
+    :method => "delete", 
+    :data => {
+      confirm: "You sure?" 
+    } %>
   
-<% end %>
-</article>
+  <% end %>
+  <%= form_tag feed_add_path do %>
+    <%= hidden_field_tag :question_id, @question.id %>
+    <%= submit_tag "Add to Feed" %>
+  <% end %>
+  </article>
 </wrapper>
 </main>
