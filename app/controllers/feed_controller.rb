@@ -34,7 +34,7 @@ class FeedController < ApplicationController
   # Get all recent questions
   def recent
     @question = Question.new
-    @questions = Question.community(current_community)
+    @questions = Question.community(current_community).reverse
     page_data = Feed.filter_by_page(params[:page], @questions)
     @questions = page_data[:items]
     @total_pages = page_data[:total_pages]
