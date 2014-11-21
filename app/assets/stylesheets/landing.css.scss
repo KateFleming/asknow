@@ -49,16 +49,13 @@ h2 {
     //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
     border-radius: 4px;
     background-color: $color_romantic_approx;
-    left: 42px;
-    top: 262px;
     width: 234px;
-    height: 47px;
+    
     z-index: 5;
     font-size: 20.214px;
     font-family: $font_1;
     color: $color_persimmon_approx;
     text-transform: uppercase;
-    line-height: 1.2;
     text-align: center;
     z-index: 9;
   margin: 0 auto;
@@ -86,12 +83,12 @@ h2 {
 }
 
   h3 {
-    font-size: 15px;
+    font-size: 18px;
     font-family: $font_1;
     color: $color_thunderbird_approx;
     line-height: 1.2;
     text-align: center;
-    font-weight: 100;
+    font-weight: normal;
     margin-top:0em;
     margin-bottom:1em;
     -webkit-text-stroke: 0.35px;
@@ -101,7 +98,6 @@ h5 {
   display:inline;
   margin:0.5em;
   color:$color_thunderbird_approx;
-  font-weight: 100;
   -webkit-text-stroke: 0.35px;
   -webkit-font-smoothing: antialiased;
 }
@@ -156,7 +152,7 @@ h5 {
     margin: 0 auto;
   }
       a {
-        padding-top:1.2em;
+        padding:12px 0 8px;
         color:$color_romantic_approx;
         list-style-type: none;
         text-decoration:none;

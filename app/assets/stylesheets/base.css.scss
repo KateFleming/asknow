@@ -9,8 +9,14 @@ a:link, a:visited {
   font-weight:bold;
   color:$darkColor;
 }
+a:hover {
+  color:black;
+}
+a:active {
+  color:$liveColor;
+}
 @font-face {
-  font-family: Glober;
+  font-family: "Glober";
 }
 //colors
 $color_romantic_approx: rgb(255, 203, 186);
@@ -18,7 +24,7 @@ $color_persimmon_approx: rgb(244, 93, 76);
 $color_thunderbird_approx: rgb(188, 45, 29);
 
 //fonts
-$font_1: Glober;
+$font_1: "Glober";
 body {
   font-family:$font_1;
   margin:0;

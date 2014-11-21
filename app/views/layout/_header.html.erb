@@ -3,7 +3,7 @@
     <img src="/assets/logo-small.svg"/>
   </a>
   <% if current_account.community %>
-    <%= link_to current_community.name, community_path, class: "community-link" %>
+    <%= link_to current_community.name, trending_path, class: "community-link" %>
   <% else %>
     <%= link_to "Pick a Community", community_path, class: "community-link" %>
   <% end %>

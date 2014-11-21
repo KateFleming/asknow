@@ -1,18 +1,1 @@
-<h1>Ask <%= current_account.community.name %>!</h1>
-<%= form_for @question, :url => question_ask_path do |f| %>
-  <% if @question.errors.any? %>
-    <div>
-      <ul>
-        <% @question.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div>
-    <%= f.text_area :entry %>
-  </div>
-  <div>
-    <%= f.submit "Ask!" %>
-  </div>
-<% end %>
+<%= render 'question/form' %>
