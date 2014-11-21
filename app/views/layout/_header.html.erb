@@ -7,5 +7,7 @@
   <% else %>
     <%= link_to "Pick a Community", community_path, class: "community-link" %>
   <% end %>
-  
+  <p class="account-snippet">
+    <%= link_to current_account.display_name, account_panel_path %>
+  </p>
 </header>

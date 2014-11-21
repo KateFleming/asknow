@@ -3,12 +3,12 @@
   <button class="close-menu">&#10005;</button>
   <ul>
     <li><%= link_to "Ask a Question", question_path %></li>
+    <li><%= link_to "Trending", trending_path %></li>
+    <li><%= link_to "Recent", recent_path %></li>
     <li><%= link_to "Communities", community_path %></li>
     <% if current_account.member? %>
     <li><%= link_to "My Feed", feed_path %></li>
     <% end %>
-    <li><%= link_to "Recent", recent_path %></li>
-    <li><%= link_to "Trending", trending_path %></li>
     <% if current_account.guest? %>
     <li><%= link_to "New Account", member_new_path %></li>
     <li><%= link_to "Login", session_login_path %></li>

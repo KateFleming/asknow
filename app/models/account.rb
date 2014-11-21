@@ -33,6 +33,14 @@ class Account < ActiveRecord::Base
     account_type == 'guest'
   end
   
+  def display_name
+    if self.guest?
+      "Guest"
+    else
+      self.name
+    end
+  end
+  
   # Does the account own an item
   def owns?(item)
     item.account == self
