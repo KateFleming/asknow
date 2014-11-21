@@ -13,6 +13,8 @@ class FeedController < ApplicationController
   
   # What's hot
   def trending
+    @question = Question.new
+    
     @questions = Question.community(current_community)
     @questions = @questions.sort_by do |question|
       question.rating.to_i
@@ -34,6 +36,8 @@ class FeedController < ApplicationController
   
   # Get all recent questions
   def recent
+    @question = Question.new
+    
     @questions = Question.community(current_community).reverse
   end
   

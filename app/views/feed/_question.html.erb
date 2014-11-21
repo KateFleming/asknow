@@ -1,9 +1,21 @@
 <article class="question">
   <h1 class="placeholder"><%= link_to @question.entry, question_show_path(@question) %></h1>
   <ul>
-  <% @question = @question.answers.sort_by{ |answer| answer.votes.count }.reverse.take(3) %>
-    <% @question.each do |answer| %>
-      <li><%= link_to answer.entry, vote_cast_path(answer.id), method: :post %>(<%= answer.votes.count %>)</li>
+  <% @answers = @question.answers.sort_by{ |answer| answer.votes.count }.reverse.take(3) %>
+    <% if  @answers.count < 1 %>
+      <span class="lite">No answers yet.</span>
     <% end %>
+    <% @answers.each do |answer| %>
+      <li>
+        <a href="<%= vote_cast_path(answer.id) %>" data-method="post">
+          <div class="counter <%= "answered" if current_account.voted_on?(answer) %>"><%= answer.votes.count %></div>
+          <% entry = answer.entry %>
+          <div class="answer-entry"><%= entry.slice(0, 30) %><%= "..." if entry.size > 30 %></div>
+        </a>
+      </li>
+    <% end %>
+    <li class="suggest-answer">
+      <%= link_to "Suggest an Answer...", question_show_path(@question) %>
+    </li>
   </ul>
 </article>

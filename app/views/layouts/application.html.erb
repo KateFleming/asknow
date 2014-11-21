@@ -2,12 +2,13 @@
 <html>
 <head>
   <title>Asknow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="application-layout">
-<%= render 'layout/header' %>
+<%= render 'layout/header'%>
 <% if flash.any? %>
   <ul class="page-notices">
     <% flash.each do |notice| %>
@@ -15,14 +16,7 @@
     <% end %>
   </ul>
 <% end %>
-<% if current_account.community %>
-  <div><%= link_to current_account.community.name, community_path %></div>
-<% else %>
-  <div><%= link_to "Pick a Community", community_path %></div>
-<% end %>
-
 <%= render 'layout/nav' %>
-
 <%= yield %>
 </body>
 </html>

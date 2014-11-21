@@ -33,10 +33,30 @@ class Account < ActiveRecord::Base
     account_type == 'guest'
   end
   
+  def display_name
+    if self.guest?
+      "Guest"
+    else
+      self.name
+    end
+  end
+  
   # Does the account own an item
   def owns?(item)
     item.account == self
   end
+  
+  # Find if a user has voted
+  def voted_on?(answer)
+    has_voted = false
+    answer.votes.each do |vote|
+      if vote.account == self
+        has_voted = true 
+      end
+    end
+    has_voted
+  end
+  
   def primary_feed
     Feed.find_by(account: self, primary: true)
   end
