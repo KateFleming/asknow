@@ -1,5 +1,8 @@
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<h1>Recently asked questions</h1>
+<nav class="feed-nav">
+  <%= link_to "Trending", trending_path %>
+  <%= link_to "Recent", recent_path, class: "live" %>
+  <a href="#">Search</a>
+</nav>
 <section>
   <%= render 'questions' %>
 </section>

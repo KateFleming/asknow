@@ -37,6 +37,18 @@ class Account < ActiveRecord::Base
   def owns?(item)
     item.account == self
   end
+  
+  # Find if a user has voted
+  def voted_on?(answer)
+    has_voted = false
+    answer.votes.each do |vote|
+      if vote.account == self
+        has_voted = true 
+      end
+    end
+    has_voted
+  end
+  
   def primary_feed
     Feed.find_by(account: self, primary: true)
   end

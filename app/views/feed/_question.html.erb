@@ -3,7 +3,13 @@
   <ul>
   <% @question = @question.answers.sort_by{ |answer| answer.votes.count }.reverse.take(3) %>
     <% @question.each do |answer| %>
-      <li><%= link_to answer.entry, vote_cast_path(answer.id), method: :post %>(<%= answer.votes.count %>)</li>
+      <li>
+        <a href="<%= vote_cast_path(answer.id) %>" data-method="post">
+          <div class="counter <%= "answered" if current_account.voted_on?(answer) %>"><%= answer.votes.count %></div>
+          <% entry = answer.entry %>
+          <div class="answer-entry"><%= entry.slice(0, 20) %><%= "..." if entry.size > 20 %></div>
+        </a>
+      </li>
     <% end %>
   </ul>
 </article>

@@ -1,13 +1,13 @@
 $navHeight: 60px;
 
-nav {
+.menu {
   position:fixed;
   background:white;
   top:0;
   right:-300px;
   height:100%;
   width:300px;
-  border-left:10px solid $baseColor;
+  border-left:10px solid $darkColor;
   z-index:200;
   
   .open-menu, .close-menu {
@@ -19,7 +19,7 @@ nav {
     cursor:pointer;
     color:white;
     border:none;
-    background: #333;
+    background: $darkColor;
   }
   
   .open-menu {
@@ -45,7 +45,7 @@ nav {
         padding:20px 60px 16px 20px;
         
         &:hover {
-          background:#333;
+          background:$baseColor;
           color:white;
         }
       }
@@ -64,8 +64,8 @@ nav {
     
     &.community-link {
       position:relative;
-      margin:10px 0 0 10px;
-      color: $lightColor;
+      margin:7px 0 0 5px;
+      color: $darkColor;
       font-size:1.3em;
     }
 
