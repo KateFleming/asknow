@@ -1,13 +1,16 @@
 // Place all the styles related to the question controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.questions-container {
+  padding:10px;
+  text-align:center;
+}
 .question {
   position: relative;
   padding: 10px 16px;
   background-color: #F45D4C;
   color: white;
-  margin: 0 2em auto;
-  margin-bottom: 2em;
+  margin: 10px;
   text-align: center;
   border-radius: 2px;
 
@@ -56,8 +59,8 @@
           border-bottom-left-radius:2px;
         
           &.answered {
-            background:$darkColor;
-            color:$lightColor;
+            background:$liveColor;
+            color:white;
           }
         }
         .answer-entry {
@@ -81,5 +84,30 @@
     text-transform:none;
     text-decoration: none;
     color:$darkColor;
+  }
+}
+
+.new_question {
+  margin:auto;
+  text-align:center;
+  
+  textarea {
+    outline:0;
+    resize:none;
+    width:calc(100% - 40px);
+    height:40px;
+    padding:7px;
+    border-radius:5px;
+    background:white;
+    font-size:1em;
+    border:3px solid $liveColor;
+    
+    @media (min-width:500px){
+      width:340px;
+    }
+  }
+  
+  input[type=submit]{
+    display:none;
   }
 }

@@ -1,0 +1,18 @@
+<%= form_for @question, :url => question_ask_path do |f| %>
+  <% if @question.errors.any? %>
+    <div>
+      <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.text_area :entry, placeholder: "Ask Seattle..." %>
+  </div>
+  <div>
+    <%= f.submit "Ask!" %>
+  </div>
+<% end %>
+<%= render 'questions' %>

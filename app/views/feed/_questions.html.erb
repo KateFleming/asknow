@@ -1,4 +1,6 @@
-<% @questions.each do |question| %>
-  <% @question = question %>
-  <%= render 'feed/question' %>
-<% end %>
+<section class="questions-container">
+  <% @questions.each do |question| %>
+    <% @question = question %>
+    <%= render 'feed/question' %>
+  <% end %>
+</section>
