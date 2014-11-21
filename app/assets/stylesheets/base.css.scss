@@ -18,7 +18,7 @@ $color_persimmon_approx: rgb(244, 93, 76);
 $color_thunderbird_approx: rgb(188, 45, 29);
 
 //fonts
-$font_1: Glober;
+$font_1: "Glober";
 body {
   font-family:$font_1;
   margin:0;
@@ -43,7 +43,4 @@ body {
 section {
   display: block;
   width: 100%;
-}
-img:hover {
-  color:blue;
 }
