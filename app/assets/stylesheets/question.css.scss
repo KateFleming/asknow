@@ -11,7 +11,7 @@
   background-color: #F45D4C;
   color: white;
   margin: 10px;
-  text-align: center;
+  text-align: left;
   border-radius: 2px;
 
   @media (min-width: 660px) and (max-width: 1144px) {
@@ -40,7 +40,6 @@
       list-style-type: none;
       background-color: white;
       margin:4px 0;
-      text-align:left;
       border-radius:2px;
     
       a {
@@ -71,8 +70,13 @@
   }
  
  .suggest-answer {
-   font-size:0.7em;
-   color:$darkColor;
+   background:none;
+   font-size:0.9em;
+   padding-top:15px;
+   
+   a {
+     color:$lightColor;
+   }
  }
 }
 
