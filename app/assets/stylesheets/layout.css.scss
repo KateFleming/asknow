@@ -296,3 +296,128 @@ input:focus, textarea:focus {
   }
  
 }
+.show {
+  .questions-container {
+  padding:10px;
+  text-align:center;
+  
+}
+.question {
+  position: relative;
+  padding: 10px 16px;
+  background-color: #F45D4C;
+  color: white;
+  margin-top: 10px;
+  text-align: left;
+  border-radius: 2px;
+  font-size: 13px;
+  min-width:300px;
+  
+
+  @media (min-width: 730px) and (max-width: 1144px) {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  @media (min-width: 650px) and (max-width: 860px) {
+    font-size: 13px;
+  }
+
+  @media (min-width: 1145px) {
+    width: 27.5%;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+
+    ul, a {
+      margin: 1em auto;
+      padding: .25em;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin:0;
+
+    li {
+      list-style-type: none;
+      background-color: white;
+      margin:4px 0;
+      border-radius:2px;
+
+      a {
+        text-decoration: none;
+        color: #BC2D1D;
+        width: 100%;
+
+        .counter {
+          height:100%;
+          display:inline-block;
+          position:relative;
+          left:-4px;
+          padding:7px 13px;
+          background:#f5f5f5;
+          border-top-left-radius:2px;
+          border-bottom-left-radius:2px;
+
+          &.answered {
+            background:$liveColor;
+            color:white;
+          }
+        }
+        .answer-entry {
+          display:inline-block;
+        }
+      }
+    }
+  }
+
+ .suggest-answer {
+   background:none;
+   font-size:0.9em;
+   padding-top:15px;
+   font-weight:100;
+   display: none;
+
+   a {
+     color:$lightColor;
+   }
+ }
+}
+
+.placeholder {
+  margin: 10px auto;
+  font-size:1.5em;
+  text-align: center;
+
+  a {
+    text-transform:none;
+    text-decoration: none;
+    color:$darkColor;
+  }
+}
+  wrapper {
+    display:block;
+    background-color: rgb(244, 93, 76);
+    margin:30px;
+    
+  }
+  input {
+    margin:0 auto;
+    margin-top:0.7em;
+    display:block;
+  }
+  .suggest {
+    text-align: center;
+  }
+  .new_answer {
+    text-align: center;
+  }
+  .del {
+    margin-top:0.5em;
+   text-align: center;
+    display: block;
+  }
+}
