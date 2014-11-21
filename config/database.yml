@@ -1,7 +1,4 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: asknow_dev
   pool: 5
-  username:
-  password:
