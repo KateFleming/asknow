@@ -90,24 +90,59 @@
 .new_question {
   margin:auto;
   text-align:center;
-  
+  padding:0 20px;
   textarea {
     outline:0;
     resize:none;
-    width:calc(100% - 40px);
+    width:calc(100%);
     height:40px;
     padding:7px;
     border-radius:5px;
     background:white;
     font-size:1em;
-    border:3px solid $liveColor;
+    border:3px solid #ccc;
     
     @media (min-width:500px){
       width:340px;
     }
+    
+    &.active{
+      height:80px;
+      border-color:$liveColor;
+    }
   }
   
-  input[type=submit]{
+  footer {
+    overflow:auto;
     display:none;
+    
+    input[type=submit]{
+      float:left;
+      background:$liveColor;
+      border:none;
+      font-size:1em;
+      color:white;
+      text-transform:uppercase;
+      padding:10px 50px;
+      border-radius:2px;
+      
+      &:disabled {
+        background:#ccc;
+      }
+    }
+    .character-counter {
+      font-size:1em;
+      float:right;
+      padding:10px;
+      font-weight:bold;
+    }
+    @media (min-width:500px){
+      margin:auto;
+      width:340px;
+    }
   }
+}
+.over-limit {
+  color:red;
+  border-color:red !important;
 }
