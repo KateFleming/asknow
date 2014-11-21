@@ -1,10 +1,13 @@
 <header class="header">
-<wrapper>
-
-  <img class="logo" src="/assets/smalllogo.png"/>
-  
-  <a href="#">Seattle, WA</a>
-  
-  <img class="hamburger" src="/assets/menu-button.png"/>
-  </wrapper>
+  <a class="logo" href="<%= trending_path %>">
+    <img src="/assets/logo-small.svg"/>
+  </a>
+  <% if current_account.community %>
+    <%= link_to current_community.name, community_path, class: "community-link" %>
+  <% else %>
+    <%= link_to "Pick a Community", community_path, class: "community-link" %>
+  <% end %>
+  <p class="account-snippet">
+    <%= link_to current_account.display_name, account_panel_path %>
+  </p>
 </header>

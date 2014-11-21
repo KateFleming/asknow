@@ -1,0 +1,21 @@
+<section class="feed-question-new">
+  <%= form_for @question, :url => question_ask_path do |f| %>
+    <% if @question.errors.any? %>
+      <div>
+        <ul>
+          <% @question.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <%= f.text_area :entry, class: "feed-question-field", placeholder: "Ask #{current_community.name} something..." %>
+    </div>
+    <footer>
+      <%= f.submit "Ask Question", class: "feed-question-submit" %>
+      <div class="character-counter"></div>
+    </footer>
+  <% end %>
+  <%= render 'questions' %>
+</section>
