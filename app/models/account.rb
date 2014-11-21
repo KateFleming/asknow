@@ -33,6 +33,10 @@ class Account < ActiveRecord::Base
     account_type == 'guest'
   end
   
+  # Does the account own an item
+  def owns?(item)
+    item.account == self
+  end
   def primary_feed
     Feed.find_by(account: self, primary: true)
   end

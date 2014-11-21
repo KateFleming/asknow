@@ -37,7 +37,21 @@ class QuestionController < ApplicationController
       flash[:error] = "We couldn't find that question"
       redirect_to trending_path
   end
-    
+  
+  def delete
+    @question = Question.find(params[:id])
+    if current_account.owns?(@question)
+      if @question.destroy
+        flash[:notice] = "Good bye, dear question."
+      else
+        flash[:error] = "Well shoot, we couldn't delete that question."
+      end
+      redirect_to :back
+    else
+      flash[:error] = "You don't own that question!"
+      redirect_to :back
+    end
+  end
   private
   def question_params
     params.require(:question).permit(:entry)

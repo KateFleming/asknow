@@ -2,3 +2,84 @@
   display:inline;
   color:red;
 }
+
+a:link, a:visited {
+  text-decoration:none;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+@font-face {
+  font-family: Glober;
+}
+//colors
+$color_romantic_approx: rgb(255, 203, 186);
+$color_persimmon_approx: rgb(244, 93, 76);
+$color_thunderbird_approx: rgb(188, 45, 29);
+
+//fonts
+$font_1: Glober;
+body {
+  font-family:$font_1;
+  margin:0;
+}
+html {
+  margin:0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1em;
+  line-height: 1.5em;
+  background: #F9F9F9;
+  margin: 0 auto;
+}
+
+section {
+  display: block;
+  width: 100%;
+}
+
+article {
+  margin: 0 auto;
+  display: block;
+}
+
+@media (min-width: 660px) and (max-width: 1144px) {
+  article {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+@media (min-width: 1145px) {
+  section {
+    display: inline-block;
+    text-align: center;
+  }
+
+  article {
+    width: 27.5%;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  article ul, a {
+    width: 90%;
+    margin: 1em auto;
+    padding: .25em;
+  }
+
+  .suggest {
+    margin: 1em auto;
+    text-align: center;
+  }
+
+}

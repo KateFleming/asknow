@@ -19,6 +19,17 @@ class FeedController < ApplicationController
     end
     
     @questions.reverse!.take(@questions.count * 0.1)
+    
+    # Pagination
+    if params[:page]
+      @page = params[:page]
+    else
+      @page = 1
+    end
+    
+    items_per_page = 10
+    starting = items_per_page * (@page - 1)
+    @questions = @questions.slice(starting, items_per_page)
   end
   
   # Get all recent questions

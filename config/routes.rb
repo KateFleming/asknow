@@ -31,12 +31,14 @@ Rails.application.routes.draw do
   post   'session/logout'   => 'session#logout', as: 'session_logout'
   
   # Question
-  get   'question'            => 'question#index'
-  post  'question'            => 'question#ask', as: 'question_ask'
-  get   'question/:id'        => 'question#show', as: 'question_show'
+  get    'question'             => 'question#index'
+  post   'question'             => 'question#ask', as: 'question_ask'
+  get    'question/:id'         => 'question#show', as: 'question_show'
+  delete 'question/:id/delete'  => 'question#delete', as: 'question_delete'
   
   # Answer
-  post  'question/:id/answer'   => 'answer#new', as: 'answer_new'
+  post   'question/:id/answer'   => 'answer#new', as: 'answer_new'
+  delete 'answer/:id/delete'     => 'answer#delete', as: 'answer_delete'
   
   # Vote
   post  'answer/:id/vote'   => 'vote#cast', as: 'vote_cast'

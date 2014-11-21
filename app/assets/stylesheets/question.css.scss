@@ -1,3 +1,42 @@
 // Place all the styles related to the question controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.question {
+  position: relative;
+  padding: 1.25em;
+  background-color: #F45D4C;
+  color: white;
+  margin: 0 2em auto;
+  margin-bottom: 2em;
+  text-align: center;
+  border-radius: 5px;
+
+
+
+  ul {
+    padding: 0;
+
+  li {
+    list-style-type: none;
+    width: 100%;
+    margin-top: 1em;
+    background-color: white;
+
+    a {
+      text-decoration: none;
+      color: #BC2D1D;
+    }
+  }
+  }
+}
+
+.placeholder {
+  margin: 0 auto;
+  margin-bottom: 1em;
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+    color: #BC2D1D;
+  }
+}
