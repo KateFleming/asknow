@@ -13,7 +13,7 @@ class SessionController < ApplicationController
       current_account
       redirect_to trending_path
     else
-      @login_errors = "Could not authenticate"
+      @login_errors = "Oops! Something went wrong, please try again!"
       render 'login'
     end
   end
