@@ -9,7 +9,10 @@ class FeedController < ApplicationController
     end
     
     @questions = @feed.question_banks.collect{ |bank| bank.question }
-    @questions = Feed.filter_by_page(params[:page], @questions)
+    page_data = Feed.filter_by_page(params[:page], @questions)
+    @questions = page_data[:items]
+    @total_pages = page_data[:total_pages]
+    @current_page = page_data[:current_page]
   end
   
   # What's hot
@@ -32,7 +35,10 @@ class FeedController < ApplicationController
   def recent
     @question = Question.new
     @questions = Question.community(current_community).reverse
-    @questions = Feed.filter_by_page(params[:page], @questions)
+    page_data = Feed.filter_by_page(params[:page], @questions)
+    @questions = page_data[:items]
+    @total_pages = page_data[:total_pages]
+    @current_page = page_data[:current_page]
   end
   
   def account
