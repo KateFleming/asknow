@@ -30,6 +30,6 @@ class Question < ActiveRecord::Base
   
   # Finds by community
   def self.community(place)
-    self.where(community: place)
+    self.where(community: place).order('id')
   end
 end
