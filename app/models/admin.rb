@@ -1,4 +1,4 @@
-class Member
+class Admin
   def validate_account(account)
     name_presence_validator.validate(account)
     email_presence_validator.validate(account)

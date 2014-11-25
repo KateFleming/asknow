@@ -13,6 +13,8 @@ class FeedController < ApplicationController
     @questions = page_data[:items]
     @total_pages = page_data[:total_pages]
     @current_page = page_data[:current_page]
+    
+    authorize! :read, @feed
   end
   
   # What's hot

@@ -13,4 +13,9 @@ module SessionHelper
     end
     @current_account
   end
+  
+  # For CanCan
+  def current_user
+    current_account
+  end
 end
