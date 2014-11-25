@@ -1,6 +1,4 @@
 class QuestionController < ApplicationController
-  before_filter :require_community
-  
   def index
     @question = Question.new
   end
@@ -16,7 +14,6 @@ class QuestionController < ApplicationController
     
     @question = Question.new({
       account: current_account,
-      community: current_account.community,
       entry: entry.gsub(tag_pattern, ''),
       keywords: keywords.join(",")
     })

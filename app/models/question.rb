@@ -3,7 +3,6 @@ class Question < ActiveRecord::Base
   validates :entry, presence: true, length: { maximum: 100 }
   
   # Relationships
-  belongs_to :community
   belongs_to :account
   belongs_to :feed
   has_many :answers, dependent: :destroy
@@ -26,10 +25,5 @@ class Question < ActiveRecord::Base
     
     # Return a count of votes and answers
     answers.count + votes
-  end
-  
-  # Finds by community
-  def self.community(place)
-    self.where(community: place).order('id')
   end
 end

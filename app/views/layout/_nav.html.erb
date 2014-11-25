@@ -5,7 +5,6 @@
     <li><%= link_to "Ask a Question", question_path %></li>
     <li><%= link_to "Trending", trending_path %></li>
     <li><%= link_to "Recent", recent_path %></li>
-    <li><%= link_to "Communities", community_path %></li>
     <% if current_account.member? %>
     <li><%= link_to "My Feed", feed_path %></li>
     <% end %>

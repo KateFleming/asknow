@@ -2,11 +2,6 @@
   <a class="logo" href="<%= trending_path %>">
     <img src="/assets/logo-small.svg"/>
   </a>
-  <% if current_account.community %>
-    <%= link_to current_community.name, trending_path, class: "community-link" %>
-  <% else %>
-    <%= link_to "Pick a Community", community_path, class: "community-link" %>
-  <% end %>
   <p class="account-snippet">
     <%= link_to current_account.display_name, account_panel_path %>
   </p>

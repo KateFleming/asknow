@@ -4,7 +4,6 @@ class Account < ActiveRecord::Base
   validate :type_specific_validation
   
   # Relationships
-  belongs_to :community
   has_many :feeds
   has_many :questions
   has_many :answers

@@ -123,9 +123,6 @@ h5 {
     font-weight: 100;
 //    padding-bottom:3em;
   }
-  .pickcity {
-    margin-top:3em;
-  }
   .learn:hover, .login:hover {
     color:#50c7be;
     border:1px solid #50c7be;
@@ -139,24 +136,5 @@ h5 {
    color:#50c7be;
     font-weight:bold;
   }
-  .city:hover {
-    color:#50c7be;
-    
-  }
-  .city {
-    text-decoration: none;
-    color: $color_romantic_approx;
-  }
-  .community {
-    width:100%;
-    margin: 0 auto;
-  }
-      a {
-        padding:12px 0 8px;
-        color:$color_romantic_approx;
-        list-style-type: none;
-        text-decoration:none;
-      }
-
 }
 

@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   resources :landing
   
-  # Community
-  get   'community'       => 'community#index'
-  post  'community/pick'  => 'community#pick', as: 'pick_community'
-  
   # Feed
   get    'feed'           => 'feed#account', as: 'feed'
   get    'feed/:tag'      => 'feed#show', as: 'feed_show'

@@ -1,5 +1,4 @@
 class FeedController < ApplicationController
-  before_filter :require_community
   
   def show
     # Search first by tag, then ID
@@ -21,7 +20,7 @@ class FeedController < ApplicationController
   def trending
     @question = Question.new
     
-    @questions = Question.community(current_community)
+    @questions = Question.all
     @questions = @questions.sort_by do |question|
       question.rating.to_i
     end
@@ -36,7 +35,7 @@ class FeedController < ApplicationController
   # Get all recent questions
   def recent
     @question = Question.new
-    @questions = Question.community(current_community).reverse
+    @questions = Question.all.reverse
     page_data = Feed.filter_by_page(params[:page], @questions)
     @questions = page_data[:items]
     @total_pages = page_data[:total_pages]

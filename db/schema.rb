@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120044519) do
+ActiveRecord::Schema.define(version: 20141125175238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,10 @@ ActiveRecord::Schema.define(version: 20141120044519) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "account_type"
   end
-
-  add_index "accounts", ["community_id"], name: "index_accounts_on_community_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -34,14 +31,6 @@ ActiveRecord::Schema.define(version: 20141120044519) do
     t.string   "entry"
     t.integer  "account_id"
     t.integer  "question_id"
-  end
-
-  create_table "communities", force: true do |t|
-    t.string   "name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "feeds", force: true do |t|
@@ -68,14 +57,11 @@ ActiveRecord::Schema.define(version: 20141120044519) do
   create_table "questions", force: true do |t|
     t.string   "entry"
     t.string   "keywords"
-    t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
     t.integer  "rating"
   end
-
-  add_index "questions", ["community_id"], name: "index_questions_on_community_id", using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "answer_id"
