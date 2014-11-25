@@ -4,6 +4,8 @@ class VoteController < ApplicationController
     @question = @answer.question
     @vote = Vote.new(account: current_account, answer: @answer)
     
+    authorize! :create, @vote
+    
     if @vote.save
       redirect_to :back
     else

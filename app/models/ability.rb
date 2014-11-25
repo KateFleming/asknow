@@ -10,48 +10,66 @@ class Ability
     if account.admin?
       # An admin can do anything
       can :manage, :all
-    else
-      if account.member?
-        # Members can manage their own feeds
-        can :manage, Feed do |feed|
-          account.owns?(feed)
-        end
-        
-        # Members can view any other questions
-        can :view, Question
-        
-        # Members can manager their own questions
-        can :manage, Question do |question|
-          account.owns?(question)
-        end
-        
-        # Members can view any answer
-        can :view, Answer
-        
-        # Members can manage their own answers
-        can :manage, Answer do |answer|
-          account.owns?(answer)
-        end
-      elsif account.guest?
-        # Guests can manage their own feeds
-        can :manage, Feed do |feed|
-          account.owns?(feed)
-        end
-        
-        # Guests can view any other questions
-        # can :view, Question
-        
-        # Guests can view any answer
-        can :view, Answer
-        
-        # Members can manage their own answers
-        can :manage, Answer do |answer|
-          account.owns?(answer)
-        end
-      elsif account.banned?
-        # Banned people can't do anything
-        cannot :manage, :all
+    elsif account.member?
+      # Members can manage their own accounts
+      can :manage, Account do |_account|
+        account == _account
       end
+      
+      # Members can manage their own feeds
+      can :manage, Feed do |feed|
+        account.owns?(feed)
+      end
+      
+      # Members can view any other questions
+      can :view, Question
+      
+      # Members can manager their own questions
+      can :manage, Question do |question|
+        account.owns?(question)
+      end
+      
+      # Members can view any answer
+      can :view, Answer
+      
+      # Members can manage their own answers
+      can :manage, Answer do |answer|
+        account.owns?(answer)
+      end
+      
+      # Members can manage their votes
+      can :manage, Vote do |vote|
+        account.owns?(vote)
+      end
+    elsif account.guest?
+      # Guests can manage their own accounts
+      can :manage, Account do |_account|
+        account == _account
+      end
+      
+      # Guests can manage their own feeds
+      can :manage, Feed do |feed|
+        account.owns?(feed)
+      end
+      
+      # Guests can view any other questions
+      # can :view, Question
+      
+      # Guests can view any answer
+      can :view, Answer
+      
+      # Guests can manage their own answers
+      can :manage, Answer do |answer|
+        account.owns?(answer)
+      end
+      
+      # Guests can manage their votes
+      can :manage, Vote do |vote|
+        account.owns?(vote)
+      end
+    else
+      # If they're anything else, don't let them do anything
+      cannot :manage, :all
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

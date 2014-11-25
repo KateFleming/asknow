@@ -1,6 +1,9 @@
 class AccountController < ApplicationController
   before_filter :require_logged_in, :require_community
   def panel
-    @questions = Question.where(account: current_account).all.reverse
+    @account = current_account
+    @questions = Question.where(account: @account).all.reverse
+    
+    authorize! :read, @account
   end
 end

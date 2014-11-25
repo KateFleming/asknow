@@ -1,5 +1,5 @@
-<h1>How's it going, <%= current_account.name %>?</h1>
-<% if !current_account.guest? %>
+<h1>How's it going, <%= @account.name %>?</h1>
+<% if !@account.guest? %>
   <%= link_to "Logout", session_logout_path, method: "post" %>
 <% else %>
  <%= link_to "Login", session_login_path %>
