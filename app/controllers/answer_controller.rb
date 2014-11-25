@@ -16,17 +16,14 @@ class AnswerController < ApplicationController
   
   def delete
     @answer = Answer.find(params[:id])
-    if current_account.owns?(@answer)
-      if @answer.destroy
-        flash[:notice] = "Good bye, dear answer."
-      else
-        flash[:error] = "Well shoot, we couldn't delete that answer."
-      end
-      redirect_to :back
+    authorize! :destroy, @answer
+    
+    if @answer.destroy
+      flash[:notice] = "Good bye, dear answer."
     else
-      flash[:error] = "You don't own that question!"
-      redirect_to :back
+      flash[:error] = "Well shoot, we couldn't delete that answer."
     end
+    redirect_to :back
   end
   private
     def answer_params

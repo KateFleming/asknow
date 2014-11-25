@@ -21,6 +21,8 @@ class QuestionController < ApplicationController
       keywords: keywords.join(",")
     })
     
+    authorize! :create, @question
+    
     if @question.save
       redirect_to question_show_path(@question)
     else
@@ -40,17 +42,13 @@ class QuestionController < ApplicationController
   
   def delete
     @question = Question.find(params[:id])
-    if current_account.owns?(@question)
-      if @question.destroy
-        flash[:notice] = "Good bye, dear question."
-      else
-        flash[:error] = "Well shoot, we couldn't delete that question."
-      end
-      redirect_to :back
+    authorize! :destroy, @question
+    if @question.destroy
+      flash[:notice] = "Good bye, dear question."
     else
-      flash[:error] = "You don't own that question!"
-      redirect_to :back
+      flash[:error] = "Well shoot, we couldn't delete that question."
     end
+    redirect_to :back
   end
   private
   def question_params

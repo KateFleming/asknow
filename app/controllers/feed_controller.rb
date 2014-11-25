@@ -75,7 +75,7 @@ class FeedController < ApplicationController
     else
       @feed = Feed.find(feed_id)
     end
-    
+    authorize! :add, @feed
     @question_bank = QuestionBank.new(feed: @feed, question: @question)
     
     if @question_bank.save
@@ -84,7 +84,5 @@ class FeedController < ApplicationController
       flash[:error] = "You already have that question in your feed"
       render "question/show"
     end
-    
-    authorize! :add, @feed
   end
 end

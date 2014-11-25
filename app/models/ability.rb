@@ -2,7 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(account)
-    # Define abilities for the passed in user here. For example:
+    
+    # Define abilities for admin, member, and guest
     
     account ||= Account.new(account_type: 'guest') # guest user (not logged in)
     
