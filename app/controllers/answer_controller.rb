@@ -5,6 +5,8 @@ class AnswerController < ApplicationController
     @answer.question = @question
     @answer.account = current_account
     
+    authorize! :create, @answer
+    
     if @answer.save
       redirect_to question_show_path(params[:id])
     else

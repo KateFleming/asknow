@@ -10,10 +10,13 @@ class Account < ActiveRecord::Base
   has_many :answers
   has_many :votes
   
-  ROLES = %w[admin member guest]
+  ROLES = %w[admin member guest banned]
   
   def type
     case account_type
+    when 'banned'
+      Guest.new
+      # Banned can't do anything
     when 'guest'
       Guest.new
     when 'member'
@@ -29,14 +32,15 @@ class Account < ActiveRecord::Base
     type.validate_account(self)
   end
   
+  def banned?
+    account_type == 'banned'
+  end
   def member?
     account_type == 'member'
   end
-  
   def guest?
     account_type == 'guest'
   end
-  
   def admin?
     account_type == 'admin'
   end

@@ -32,7 +32,7 @@ class Ability
         can :manage, Answer do |answer|
           account.owns?(answer)
         end
-      else
+      elsif account.guest?
         # Guests can manage their own feeds
         can :manage, Feed do |feed|
           account.owns?(feed)
@@ -48,6 +48,9 @@ class Ability
         can :manage, Answer do |answer|
           account.owns?(answer)
         end
+      elsif account.banned?
+        # Banned people can't do anything
+        cannot :manage, :all
       end
     end
     #
