@@ -49,6 +49,7 @@ class FeedController < ApplicationController
     end
     
     @feed = Feed.new
+    authorize! :read, @feed
   end
   
   def add
@@ -83,5 +84,7 @@ class FeedController < ApplicationController
       flash[:error] = "You already have that question in your feed"
       render "question/show"
     end
+    
+    authorize! :add, @feed
   end
 end

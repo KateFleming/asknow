@@ -38,7 +38,7 @@ class Ability
         end
         
         # Guests can view any other questions
-        can :view, Question
+        # can :view, Question
         
         # Guests can view any answer
         can :view, Answer
