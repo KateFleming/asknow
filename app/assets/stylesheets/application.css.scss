@@ -2,16 +2,16 @@
 @import "bourbon";
 
 /* Variables */
-@import "variables.css.scss";
+@import "variables";
 
 /* Stucture */
-@import "fonts.css.scss";
-@import "base.css.scss";
-@import "layout.css.scss";
-@import "theme.css.scss";
+@import "fonts";
+@import "base";
+@import "layout";
+@import "theme";
 
 /* Views */
-@import "member.css.scss";
-@import "landing.css.scss";
-@import "feed.css.scss";
-@import "question.css.scss";
+@import "member";
+@import "landing";
+@import "feed";
+@import "question";
