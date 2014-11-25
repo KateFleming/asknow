@@ -48,7 +48,7 @@ class QuestionController < ApplicationController
     else
       flash[:error] = "Well shoot, we couldn't delete that question."
     end
-    redirect_to :back
+    redirect_to :trending
   end
   private
   def question_params
