@@ -9,7 +9,7 @@
   position: relative;
   padding: 10px 16px;
   background-color: #F45D4C;
-  color: white;
+  color: $darkColor;
   margin: 10px;
   text-align: left;
   border-radius: 2px;
@@ -49,6 +49,7 @@
       background-color: white;
       margin:4px 0;
       border-radius:2px;
+      color: $darkColor;
 
       a {
         text-decoration: none;
