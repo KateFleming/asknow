@@ -1,16 +1,15 @@
 <main class="landing">
-<!--<div class="logo">-->
 <img class="logo" src="/assets/logo.svg"/>
-<!--</div>-->
-<div class="container">
-  <div class="slogan">
-    <h1 class="landingslogan">Get <span class="bold">real-time </span>answers from <span class="bold">real </span>people </h1>
-    <h3>current events, opinions, local knowledge</h3>
-  </div>
+<div>
+  <h1 class="landingslogan">Get <em>real-time</em> answers from <em>real people</em> <span>for current events, opinions, local knowledge.</span></h1>
 </div>
-<footer class="landingfooter">
-  <%= link_to "Get Going", :trending, class: "button" %>
-  <h5><a class="learn" href="#">Learn More</a></h5>
-  <h5><%=link_to "Login", session_login_path, class:"login" %></h5>
-</footer>
+<div class="landing-links">
+  <%= link_to "What's Trending", :trending, class: "button" %>
+  <%= link_to "Ask a Question", :question_ask, class: "button" %>
+  <section>
+    <%= link_to "Learn More", :trending %>
+    &middot;
+    <%= link_to "Login", :session_login %>
+  </section>
+</div>
 </main>
