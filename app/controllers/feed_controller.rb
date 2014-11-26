@@ -44,7 +44,7 @@ class FeedController < ApplicationController
   
   def account
     if current_account.primary_feed
-      redirect_to feed_show_path(current_account.primary_feed)
+      redirect_to feed_show_path(current_account.primary_feed) and return
     end
     
     @feed = Feed.new
