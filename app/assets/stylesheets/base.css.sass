@@ -54,11 +54,17 @@ a
 
 /* Forms */
 input[type=text], input[type=email], input[type=tel], input[type=password]
+  border: 2px solid $lightColor
+  background: lighten($baseColor, 5%)
   font-family: "Glober"
   font-weight: 500
   font-size: 1.2em
   padding: em(5)
   outline: none
+  
+  &:focus
+    background: lighten($baseColor, 15%)
+    border-color: $liveColor
 textarea
   font-family: "Glober"
   font-weight: 500
