@@ -1,27 +1,16 @@
-<main class="login">
- <div id="form-main">
-  <div id="form-div">
+<h1>Login</h1>
+<main class="login bin">
     <%= form_tag session_login_path, class: "form", id: "form1" do %>
-    <h1>Login</h1>
   <% if @login_errors %>
     <h2><%= @login_errors %></h2>
   <% end %>
-      <p class="name">
-        <input name="email" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Email" id="email" />
-      </p>
-      
-      <p class="password">
-        <input name="password" type="password" class="validate[required,custom[email]] feedback-input" id="password" placeholder="Password" />
-      </p>
-      
-      
-      
-      <div class="button">
-        <input type="submit" value="SEND" id="button"/>
-        <div class="ease"></div>
+      <label for="email">Email:</label>
+      <input name="email" type="text" class="validate[required,custom[onlyLetter],length[0,100]]" placeholder="Email..." id="email" />
+      <label for="password">Password:</label>
+      <input name="password" type="password" class="validate[required,custom[email]]" id="password" placeholder="Password..." />
+      <div>
+        <input type="submit" value="Login" />
       </div>
 <% end %>
-  </div>
-  </div>
-  </main>
+</main>
   
