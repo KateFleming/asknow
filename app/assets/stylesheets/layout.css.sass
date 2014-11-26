@@ -43,13 +43,22 @@
   height: $navHeight
   width: 100%
   background-color: $baseColor
-  a
+  
+  &:before
+    content: ''
+    display: inline-block
+    height: 100%
+    vertical-align: middle
+  .logo
     display: inline-block
     vertical-align: middle
-    &.logo
+    height: 70%
+    overflow-x: hidden
+    
+    @media (max-width: 400px)
+      width: 50px
+    img
       height: 100%
-      img
-        height: 90%
   .account-snippet
     float: right
     position: relative
