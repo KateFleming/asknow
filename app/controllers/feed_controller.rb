@@ -1,6 +1,8 @@
 class FeedController < ApplicationController
   
   def show
+    @question = Question.new
+    
     # Search first by tag, then ID
     @feed = Feed.find_by tag: params[:tag]
     if !@feed
