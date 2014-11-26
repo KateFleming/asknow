@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="application-layout">
+<body class="application-layout <%= yield (:body_class) %>">
 <%= render 'layout/header'%>
 <% if flash.any? %>
   <ul class="page-notices">

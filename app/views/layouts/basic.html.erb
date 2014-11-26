@@ -7,7 +7,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="basic-layout">
+<body class="basic-layout <%= yield (:body_class) %>">
+<% if flash.any? %>
+  <ul class="page-notices">
+    <% flash.each do |notice| %>
+      <li clas="<%= notice[0] %>"><%= notice[1] %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= yield %>
 </body>
 </html>
