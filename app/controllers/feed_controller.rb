@@ -12,14 +12,14 @@ class FeedController < ApplicationController
     @questions = page_data[:items]
     @total_pages = page_data[:total_pages]
     @current_page = page_data[:current_page]
-    
     authorize! :read, @feed
+    render layout: "full-width"
   end
   
   # What's hot
   def trending
-    @question = Question.new
     
+    @question = Question.new
     @questions = Question.all
     @questions = @questions.sort_by do |question|
       question.rating.to_i
@@ -30,6 +30,7 @@ class FeedController < ApplicationController
     @questions = page_data[:items]
     @total_pages = page_data[:total_pages]
     @current_page = page_data[:current_page]
+    render layout: "full-width"
   end
   
   # Get all recent questions
@@ -40,6 +41,7 @@ class FeedController < ApplicationController
     @questions = page_data[:items]
     @total_pages = page_data[:total_pages]
     @current_page = page_data[:current_page]
+    render layout: "full-width"
   end
   
   def account

@@ -1,0 +1,4 @@
+@mixin border-radius($size: 2px){
+  @include border-top-radius($size);
+  @include border-bottom-radius($size);
+}

@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <ul class="page-notices">
+    <% flash.each do |notice| %>
+      <li clas="<%= notice[0] %>"><%= notice[1] %></li>
+    <% end %>
+  </ul>
+<% end %>

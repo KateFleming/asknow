@@ -2,6 +2,7 @@
 @import "bourbon";
 
 /* Variables */
+@import "mixins";
 @import "variables";
 
 /* Stucture */
@@ -11,7 +12,7 @@
 @import "theme";
 
 /* Views */
-@import "member";
-@import "landing";
-@import "feed";
-@import "question";
+@import "views/member";
+@import "views/landing";
+@import "views/feed";
+@import "views/question";

@@ -21,7 +21,7 @@
   right: 0
   height: 100%
   width: 300px
-  border-left: 10px solid $darkColor
+  border-left: 10px solid $primaryColor
   z-index: 200
   display: none
   ul
@@ -30,13 +30,13 @@
     margin: 0
     li
       list-style-type: none
-      a:link, a:visited
+      a
         color: #333
         display: block
         width: 100%
         padding: 20px 60px 16px 20px
         &:hover
-          background: $baseColor
+          background: $primaryColor
           color: white
 
 .header
@@ -54,6 +54,7 @@
     vertical-align: middle
     height: 70%
     overflow-x: hidden
+    margin-left: 7px
     
     @media (max-width: 400px)
       width: 50px
@@ -66,3 +67,12 @@
     top: 5px
     a
       color: $primaryColor
+
+.body-content
+  margin: auto
+  width: 60%
+  
+  @media (max-width: 1200px) and (min-width: 800px)
+    width: 70%
+  @media (max-width: 800px)
+    width: 90%

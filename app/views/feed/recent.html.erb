@@ -1,8 +1,4 @@
-<nav class="feed-nav">
-  <%= link_to "Trending", trending_path %>
-  <%= link_to "Recent", recent_path, class: "live" %>
-  <a href="#">Search</a>
-</nav>
+<%= render 'nav', :live => 'recent' %>
 <%= render 'question/form' %>
 <section class="feed-content">
   <%= render 'questions' %>
