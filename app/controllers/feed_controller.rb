@@ -1,6 +1,8 @@
 class FeedController < ApplicationController
   
   def show
+    @question = Question.new
+    
     # Search first by tag, then ID
     @feed = Feed.find_by tag: params[:tag]
     if !@feed
@@ -8,47 +10,39 @@ class FeedController < ApplicationController
     end
     
     @questions = @feed.question_banks.collect{ |bank| bank.question }
-    page_data = Feed.filter_by_page(params[:page], @questions)
-    @questions = page_data[:items]
-    @total_pages = page_data[:total_pages]
-    @current_page = page_data[:current_page]
-    
+    set_page_data Feed.filter_by_page(params[:page], @questions)
     authorize! :read, @feed
+    render layout: "full-width"
   end
   
   # What's hot
   def trending
-    @question = Question.new
     
+    @question = Question.new
     @questions = Question.all
     @questions = @questions.sort_by do |question|
       question.rating.to_i
     end
     
     @questions.reverse!.take(@questions.count * 0.1)
-    page_data = Feed.filter_by_page(params[:page], @questions)
-    @questions = page_data[:items]
-    @total_pages = page_data[:total_pages]
-    @current_page = page_data[:current_page]
+    set_page_data Feed.filter_by_page(params[:page], @questions)
+    render layout: "full-width"
   end
   
   # Get all recent questions
   def recent
     @question = Question.new
     @questions = Question.all.reverse
-    page_data = Feed.filter_by_page(params[:page], @questions)
-    @questions = page_data[:items]
-    @total_pages = page_data[:total_pages]
-    @current_page = page_data[:current_page]
+    set_page_data Feed.filter_by_page(params[:page], @questions)
+    render layout: "full-width"
   end
   
   def account
     if current_account.primary_feed
-      redirect_to feed_show_path(current_account.primary_feed)
+      redirect_to feed_show_path(current_account.primary_feed) and return
     end
     
     @feed = Feed.new
-    authorize! :read, @feed
   end
   
   def add
@@ -83,5 +77,11 @@ class FeedController < ApplicationController
       flash[:error] = "You already have that question in your feed"
       render "question/show"
     end
+  end
+  private
+  def set_page_data(page_data)
+    @questions = page_data[:items]
+    @total_pages = page_data[:total_pages]
+    @current_page = page_data[:current_page]
   end
 end

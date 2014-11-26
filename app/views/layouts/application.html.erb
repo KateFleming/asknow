@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Asknow</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="application-layout">
+<%= render 'layout/head' %>
+<body class="application-layout <%= yield (:body_class) %>">
 <%= render 'layout/header'%>
-<% if flash.any? %>
-  <ul class="page-notices">
-    <% flash.each do |notice| %>
-      <li clas="<%= notice[0] %>"><%= notice[1] %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'layout/flash' %>
 <%= render 'layout/nav' %>
-<%= yield %>
+<section class="body-content">
+  <section class="body-content-container">
+    <%= yield %>
+  </section>
+</section>
 </body>
 </html>

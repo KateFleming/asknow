@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<%= render 'layout/head' %>
+<body class="full-width-layout <%= yield (:body_class) %>">
+<%= render 'layout/header'%>
+<%= render 'layout/flash' %>
+<%= render 'layout/nav' %>
+<%= yield %>
+</body>
+</html>

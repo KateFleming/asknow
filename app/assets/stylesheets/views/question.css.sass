@@ -1,0 +1,208 @@
+// Place all the styles related to the question controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.question
+  position: relative
+  padding: 10px 16px
+  background: $baseColor
+  color: $darkColor
+  margin: 10px
+  text-align: left
+  +border-radius(4px)
+  font-size: 13px
+  min-width: 300px
+  width: 90%
+  display: inline-block
+  vertical-align: top
+  @media (min-width: 650px) and (max-width: 860px)
+    font-size: 13px
+  @media (min-width: 730px) and (max-width: 1144px)
+    width: 40%
+  @media (min-width: 1145px)
+    width: 27.5%
+    font-size: 14px
+    ul, a
+      margin: 1em auto
+      padding: .25em
+  .answers
+    padding: 0
+    margin: 0
+    li
+      list-style-type: none
+      background: $primaryColor
+      color: white
+      margin: 4px 0
+      border-radius: 2px
+      a
+        text-decoration: none
+        width: 100%
+        color: white
+        .counter
+          height: 100%
+          display: inline-block
+          position: relative
+          left: -4px
+          padding: 7px 13px
+          background: darken($primaryColor, 10%)
+          border-top-left-radius: 2px
+          border-bottom-left-radius: 2px
+          &.answered
+            background: $liveColor
+            color: white
+        .answer-entry
+          display: inline-block
+    // End answer li
+    .suggest-answer
+      background: none
+      font-size: 0.9em
+      padding-top: 15px
+      a
+        color: $lightColor
+  // End answers
+
+// End question
+
+.placeholder
+  margin: 10px auto
+  font-size: 1.1em
+  a
+    text-transform: none
+    text-decoration: none
+    color: $darkColor
+
+.new_question
+  margin: auto
+  text-align: center
+  padding: 0 20px
+  textarea
+    outline: 0
+    resize: none
+    width: calc(100%)
+    height: 40px
+    padding: 7px
+    border-radius: 5px
+    background: white
+    font-size: 1em
+    border: 3px solid #ccc
+    @media (min-width: 500px)
+      width: 340px
+    &.active
+      height: 80px
+      border-color: $liveColor
+  footer
+    overflow: auto
+    display: none
+    input[type=submit]
+      float: left
+      background: $liveColor
+      border: none
+      font-size: 1em
+      color: white
+      text-transform: uppercase
+      padding: 10px 50px
+      border-radius: 2px
+      &:disabled
+        background: #ccc
+    .character-counter
+      font-size: 1em
+      float: right
+      padding: 10px
+      font-weight: bold
+    @media (min-width: 500px)
+      margin: auto
+      width: 340px
+
+.over-limit
+  color: red
+  border-color: red !important
+
+.show-question
+  width: 50%
+  margin: 20px auto
+  text-align: center
+  display: block
+  background-color: rgb(244, 93, 76)
+  input
+    font-size: 1.2em
+    padding: 5px 10px
+    display: inline-block
+    .show
+      .question
+        position: relative
+        padding: 10px 16px
+        background-color: #F45D4C
+        color: white
+        margin-top: 10px
+        text-align: left
+        border-radius: 2px
+        font-size: 13px
+        min-width: 300px
+        @media (min-width: 730px) and (max-width: 1144px)
+          width: 40%
+          display: inline-block
+          vertical-align: top
+        @media (min-width: 650px) and (max-width: 860px)
+          font-size: 13px
+        @media (min-width: 1145px)
+          width: 27.5%
+          position: relative
+          display: inline-block
+          vertical-align: top
+          font-size: 14px
+          ul, a
+            margin: 1em auto
+            padding: .25em
+        ul
+          padding: 0
+          margin: 0
+          li
+            list-style-type: none
+            background-color: white
+            margin: 4px 0
+            border-radius: 2px
+            a
+              text-decoration: none
+              color: #BC2D1D
+              width: 100%
+              .counter
+                height: 100%
+                display: inline-block
+                position: relative
+                left: -4px
+                padding: 7px 13px
+                background: #f5f5f5
+                border-top-left-radius: 2px
+                border-bottom-left-radius: 2px
+                &.answered
+                  background: $liveColor
+                  color: white
+              .answer-entry
+                display: inline-block
+        .suggest-answer
+          background: none
+          font-size: 0.9em
+          padding-top: 15px
+          font-weight: 100
+          display: none
+          a
+            color: $lightColor
+      .placeholder
+        margin: 10px auto
+        font-size: 1.5em
+        text-align: center
+        a
+          text-transform: none
+          text-decoration: none
+          color: $darkColor
+      input
+        margin: 0 auto
+        margin-top: 0.7em
+        display: block
+      .suggest
+        text-align: center
+      .new_answer
+        text-align: center
+      .del
+        margin-top: 0.5em
+        text-align: center
+        display: block

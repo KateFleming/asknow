@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionHelper
   
   rescue_from CanCan::AccessDenied do |exception|
-      redirect_to trending_path, :alert => exception.message
+      flash[:error] = "Fighting ninja chickens are keeping your from doing that."
+      redirect_to trending_path
   end
 end

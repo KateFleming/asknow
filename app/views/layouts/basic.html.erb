@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<head>
-  <title>Asknow</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="basic-layout">
+<%= render 'layout/head' %>
+<body class="basic-layout <%= yield (:body_class) %>">
+<%= render 'layout/flash' %>
 <%= yield %>
 </body>
 </html>

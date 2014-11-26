@@ -1,5 +1,5 @@
-<h1><%= @feed.name %></h1>
-<p><%= @feed.account.inspect %></p>
-<div>
+<%= render 'nav', :live => "show" %>
+<%= render 'question/form' %>
+<section class="feed-content">
   <%= render 'questions' %>
-</div>
+</section>

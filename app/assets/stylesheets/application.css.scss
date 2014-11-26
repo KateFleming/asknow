@@ -1,12 +1,20 @@
-/* Variables */
-@import "variables.css.scss";
+/* Bourbon */
+@import "bourbon";
 
-/* Files */
-@import "base.css.scss";
-@import "landing.css.scss";
-@import "feed.css.scss";
-@import "question.css.scss";
-@import "fonts.css.scss";
-@import "layout.css.scss";
-@import "theme.css.scss";
-@import "member.css.scss";
+/* Variables */
+@import "mixins";
+@import "variables";
+
+/* Stucture */
+@import "fonts";
+@import "base";
+@import "layout";
+@import "theme";
+
+/* Views */
+@import "views/member";
+@import "views/landing";
+@import "views/feed";
+@import "views/question";
+@import "views/session";
+@import "views/account";
