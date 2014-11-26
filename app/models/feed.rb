@@ -15,7 +15,7 @@ class Feed < ActiveRecord::Base
       @page = 1
     end
     
-    items_per_page = 10
+    items_per_page = 18
     starting = items_per_page * (@page.to_i - 1)
     {
       items: items.slice(starting, items_per_page),
