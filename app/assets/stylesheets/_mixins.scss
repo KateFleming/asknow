@@ -2,3 +2,7 @@
   @include border-top-radius($size);
   @include border-bottom-radius($size);
 }
+
+@mixin upcase(){
+  text-transform: uppercase;
+}

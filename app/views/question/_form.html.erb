@@ -13,6 +13,8 @@
       <%= f.text_area :entry, class: "feed-question-field", placeholder: "Ask something..." %>
     </div>
     <footer>
+      <%= f.hidden_field :keywords %>
+      <div class="tag-bin"></div>
       <%= f.submit "Ask Question", class: "feed-question-submit" %>
       <div class="character-counter"></div>
     </footer>

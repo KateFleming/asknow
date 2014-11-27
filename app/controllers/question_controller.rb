@@ -4,18 +4,10 @@ class QuestionController < ApplicationController
   end
   
   def ask
-    # Get keywords
-    entry = question_params[:entry]
-    
-    # Find and replace hash tags in entry
-    tag_pattern = Regexp.new(/(?:^|\s)#(\w+)/i)
-    keywords = []
-    entry.gsub(tag_pattern){ |tag| keywords << tag }
-    
     @question = Question.new({
       account: current_account,
-      entry: entry.gsub(tag_pattern, ''),
-      keywords: keywords.join(",")
+      entry: question_params[:entry],
+      keywords: question_params[:keywords]
     })
     
     authorize! :create, @question
@@ -49,6 +41,6 @@ class QuestionController < ApplicationController
   end
   private
   def question_params
-    params.require(:question).permit(:entry)
+    params.require(:question).permit(:entry, :keywords)
   end
 end

@@ -1,0 +1,2 @@
+// Ask now object
+ask = {};
