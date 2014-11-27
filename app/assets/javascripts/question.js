@@ -7,7 +7,7 @@ ask.question = function(){
   
   function publicParseTags(self){
     var entry = self.val();
-    var PATTERN = /\s*#(?:\[[^\]]+\]|\S+)/ig;
+    var PATTERN = /#(?:[^?#.!\s]+)/ig;
     
     var list = $('<ul/>');
     tags = entry.match(PATTERN);
@@ -19,8 +19,10 @@ ask.question = function(){
         tags[i] = tag;
         list.append($('<li/>').text(tag));
       };
-    }
+    } 
+      
     return list;
+    
   }
   return {
     tags: publicTags,
@@ -43,11 +45,11 @@ $(document).ready(function(){
   
   // Show and hide footer on focus
   field.focus(function(){
-    field.addClass("active");
+    field.addClass("active").attr("placeholder", "Add tags like #seattle #outdoors.");
     footer.show();
   }).blur(function(){
     if(!$(this).val().length){
-      field.removeClass("active");
+      field.removeClass("active").attr("placeholder", field.attr("title"));
       footer.hide();
     }
   });
