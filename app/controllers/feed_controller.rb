@@ -32,7 +32,7 @@ class FeedController < ApplicationController
   # Get all recent questions
   def recent
     @question = Question.new
-    @questions = Question.all.reverse
+    @questions = Question.all.order(:created_at).reverse
     set_page_data Feed.filter_by_page(params[:page], @questions)
     render layout: "full-width"
   end
