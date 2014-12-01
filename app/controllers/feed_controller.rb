@@ -75,7 +75,7 @@ class FeedController < ApplicationController
       redirect_to feed_show_path(@feed.id)
     else
       flash[:error] = "You already have that question in your feed"
-      render "question/show"
+      redirect_to :feed
     end
   end
   private

@@ -24,6 +24,11 @@ class QuestionController < ApplicationController
     @answer = Answer.new
     @vote = Vote.new
     
+    # Get all the answers and sort them
+    @answers = @question.answers.sort_by do |answer| 
+      answer.votes.count
+    end.reverse
+    
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "We couldn't find that question"
       redirect_to trending_path

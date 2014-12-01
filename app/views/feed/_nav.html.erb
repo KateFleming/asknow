@@ -1,4 +1,5 @@
 <nav class="feed-nav">
+  <% live = live || "" %>
   <%= link_to "Trending", :trending, class: (live == "trending" ? "live" : "") %>
   <%= link_to "Recent", :recent, class: (live == "recent" ? "live" : "") %>
   <%= link_to "Feed", :feed, class: (live == "show" ? "live" : "") %>
