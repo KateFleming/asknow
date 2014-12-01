@@ -1,12 +1,12 @@
+<div>
+  <% @question.keywords.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</div>
 <main class="show">
   <%= @question.account.name %>
 <wrapper class="show-question">
   <%= render 'feed/question', :show_all => true %>
-  <div>
-    <% @question.tags.each do |tag| %>
-      <%= tag %>
-    <% end %>
-  </div>
   <article class="question">
   <% @answer = @answer || Answer.new %>
   <%= form_for @answer, :url => answer_new_path(@question), :method => "post" do |f| %>

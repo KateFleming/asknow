@@ -9,9 +9,13 @@ class Question < ActiveRecord::Base
   has_many :question_banks, dependent: :destroy
   
   # Takes data and converts to an array
-  def tags
-    if keywords
-      keywords.split(",")
+  def keywords
+    if tags
+      tags.split(",").collect do |tag|
+        if Tag.exists?(tag)
+          Tag.find(tag)
+        end
+      end
     else
       []
     end

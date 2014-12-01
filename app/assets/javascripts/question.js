@@ -7,7 +7,7 @@ ask.question = function(){
   
   function publicParseTags(self){
     var entry = self.val();
-    var PATTERN = /#(?:[^?#.!\s]+)/ig;
+    var PATTERN = /#(?:[^?#.!,;\s]+)/ig;
     
     var list = $('<ul/>');
     tags = entry.match(PATTERN);
@@ -37,7 +37,7 @@ $(document).ready(function(){
   var submit = form.find(".feed-question-submit");
   var counter = form.find('.character-counter');
   var tagBin = form.find('.tag-bin');
-  var keywords = form.find('#question_keywords');
+  var keywords = form.find('#question_tags');
   var footer = form.find('footer');
   
   // Set counter
@@ -72,6 +72,6 @@ $(document).ready(function(){
   
   // When the form is submited, add keywords to field
   form.submit(function(){
-    $('#question_keywords').val(ask.question.tags().join(","))
+    keywords.val(ask.question.tags().join(","))
   });
 });

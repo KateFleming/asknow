@@ -4,13 +4,13 @@ class QuestionController < ApplicationController
   end
   
   def ask
+    authorize! :create, @question
+    
     @question = Question.new({
       account: current_account,
       entry: question_params[:entry],
-      keywords: question_params[:keywords]
+      tags: Tag.process_all(question_params[:tags])
     })
-    
-    authorize! :create, @question
     
     if @question.save
       redirect_to question_show_path(@question)
@@ -41,6 +41,6 @@ class QuestionController < ApplicationController
   end
   private
   def question_params
-    params.require(:question).permit(:entry, :keywords)
+    params.require(:question).permit(:entry, :tags)
   end
 end
