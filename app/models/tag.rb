@@ -1,6 +1,8 @@
 class Tag < ActiveRecord::Base
   # Validations
   validates :name, presence: true
+  # Relationships
+  has_and_belongs_to_many :questions
   
   # Processes a list of keywords
   def self.process_all(keywords)
@@ -9,11 +11,11 @@ class Tag < ActiveRecord::Base
       
       # Split the keywords and loop through each on
       keywords.split(",").each do |keyword|
-        tags << self.new(name: keyword).find_or_add.id
+        tags << self.new(name: keyword).find_or_add
       end
       
-      # Return a coma-seperated string of keywords ids
-      tags.join(",")
+      # Return an array of tags
+      tags
     end
   end
   
