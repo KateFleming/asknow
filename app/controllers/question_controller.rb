@@ -15,7 +15,8 @@ class QuestionController < ApplicationController
     if @question.save
       redirect_to question_show_path(@question)
     else
-      render index
+      flash[:errors] = @question.errors.full_messages.join(", ")
+      redirect_to :back
     end
   end
   
@@ -23,6 +24,11 @@ class QuestionController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @vote = Vote.new
+    
+    # Get all the answers and sort them
+    @answers = @question.answers.sort_by do |answer| 
+      answer.votes.count
+    end.reverse
     
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "We couldn't find that question"

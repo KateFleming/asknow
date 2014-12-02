@@ -1,37 +1,59 @@
-<div>
-  <% @question.keywords.each do |tag| %>
-    <%= tag.name %>
-  <% end %>
-</div>
-<main class="show">
-  <%= @question.account.name %>
-<wrapper class="show-question">
-  <%= render 'feed/question', :show_all => true %>
-  <article class="question">
-  <% @answer = @answer || Answer.new %>
-  <%= form_for @answer, :url => answer_new_path(@question), :method => "post" do |f| %>
-    <% if @answer.errors.any? %>
-      <div>
-        <ul>
-          <% @answer.errors.full_messages.each do |msg| %>
-             <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
+<%= render 'feed/nav' %>
+<main class="show-question">
+  <h1><%= @question.entry %></h1>
+  <h2 class="time">Asked <%= time_ago_in_words(@question.created_at) %> ago</h2>
+  <div class="actions">
+    <ul>
+      <li>
+        <%= link_to "Delete Question", 
+      question_delete_path(@question), class:"delete-question", :method => "delete", :data => { confirm: "You sure?" } if can? :destroy, @question %>
+      </li>
+      <li>
+        <%= form_tag feed_add_path, id: "add-to-feed" do %>
+          <%= hidden_field_tag :question_id, @question.id %>
+        <% end %>
+        <a href="#" onclick="$('#add-to-feed').submit()" class="button">Add to Feed</a>
+      </li>
+    </ul>
+  </div>
+  <section class="tags">
+    <ul>
+      <% @question.keywords.each do |tag| %>
+        <li><%= link_to "##{tag.name}" %></li>
+      <% end %>
+    </ul>
+  </section>
+  <section class="bin">
+    <ul class="answers">
+      <% if  @answers.count < 1 %>
+        <span class="lite">No answers yet.</span>
+      <% end %>
+      <% @answers.each do |answer| %>
+        <li>
+          <a href="<%= vote_cast_path(answer.id) %>" data-method="post">
+            <div class="counter <%= "answered" if current_account.voted_on?(answer) %>"><%= answer.votes.count %></div>
+            <% entry = answer.entry %>
+            <div class="answer-entry"><%= entry.slice(0, 30) %><%= "..." if entry.size > 30 %></div>
+          </a>
+          <%= link_to image_tag("delete-white.svg"), answer_delete_path(answer), class: "delete-answer", method: :delete, data: { confirm: "You sure?" } if can? :destroy, answer %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+  <footer>
+    <% @answer = @answer || Answer.new %>
+    <%= form_for @answer, :url => answer_new_path(@question), :method => "post" do |f| %>
+      <% if @answer.errors.any? %>
+        <div>
+          <ul>
+            <% @answer.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.text_field :entry, value: '', placeholder: "Suggest an Answer..." %>
+      <%= f.submit "Submit Answer" %>
     <% end %>
-    <%= f.text_field :entry, value: '', placeholder: "Suggest an Answer..." %>
-    <%= f.submit "Submit Answer" %>
-  <% end %>
-    <%= link_to "Delete Question", 
-    question_delete_path(@question), class:"del", 
-    :method => "delete", 
-    :data => {
-      confirm: "You sure?" 
-    } if can? :destroy, @question %>
-  <%= form_tag feed_add_path do %>
-    <%= hidden_field_tag :question_id, @question.id %>
-    <%= submit_tag "Add to Feed" %>
-  <% end %>
-  </article>
-</wrapper>
+  </footer>
 </main>

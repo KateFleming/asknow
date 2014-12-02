@@ -10,7 +10,7 @@ class VoteController < ApplicationController
       redirect_to :back
     else
       flash[:error] = "You've already voted on that answer"
-      render "question/show"
+      redirect_to :back
     end
   end
 end

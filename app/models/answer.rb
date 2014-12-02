@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   # Validations
-  validates :entry, presence: true, length: { maximum:50 }
+  validates :entry, presence: true, length: { maximum: 100 }
   after_save :rate_question
   
   # Relationships
