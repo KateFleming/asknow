@@ -14,11 +14,10 @@
   width: 90%
   display: inline-block
   vertical-align: top
-  @media (min-width: 650px) and (max-width: 860px)
-    font-size: 13px
-  @media (min-width: 730px) and (max-width: 1144px)
+  
+  +respond-to("medium")
     width: 40%
-  @media (min-width: 1145px)
+  +respond-to("large")
     width: 27.5%
     font-size: 14px
     ul, a
