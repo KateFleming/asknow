@@ -19,7 +19,7 @@
   <section class="tags">
     <ul>
       <% @question.tags.each do |tag| %>
-        <li><%= link_to "##{tag.name}", gravity_path(tag.name) %></li>
+        <li><%= link_to tag.name, gravity_path(tag.name) %></li>
       <% end %>
     </ul>
   </section>
@@ -33,7 +33,7 @@
           <a href="<%= vote_cast_path(answer.id) %>" data-method="post">
             <div class="counter <%= "answered" if current_account.voted_on?(answer) %>"><%= answer.votes.count %></div>
             <% entry = answer.entry %>
-            <div class="answer-entry"><%= entry.slice(0, 30) %><%= "..." if entry.size > 30 %></div>
+            <div class="answer-entry"><%= entry %><%= "..." if entry.size > 30 %></div>
           </a>
           <%= link_to image_tag("delete-white.svg"), answer_delete_path(answer), class: "delete-answer", method: :delete, data: { confirm: "You sure?" } if can? :destroy, answer %>
         </li>

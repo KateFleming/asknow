@@ -1,9 +1,14 @@
 <article class="question">
-  <% @show_answers = 3 %>
-  <% @show_answers = 100 if defined?(show_all) %>
   <h1 class="placeholder"><%= link_to @question.entry, question_show_path(@question) %></h1>
+  <section class="tags">
+    <ul>
+      <% @question.tags.take(3).each do |tag| %>
+        <li><%= link_to tag.name, gravity_path(tag.name) %></li>
+      <% end %>
+    </ul>
+  </section>
   <ul class="answers">
-  <% @answers = @question.answers.sort_by{ |answer| answer.votes.count }.reverse.take(@show_answers) %>
+  <% @answers = @question.answers.sort_by{ |answer| answer.votes.count }.reverse.take(5) %>
     <% if  @answers.count < 1 %>
       <span class="lite">No answers yet.</span>
     <% end %>

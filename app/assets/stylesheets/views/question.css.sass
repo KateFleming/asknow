@@ -24,6 +24,15 @@
       margin: 1em auto
       padding: .25em
 
+  .tags
+    ul
+      padding: 0
+      margin: 0
+      li
+        margin: 0
+        background: white
+  .answers
+    margin: em(5) 0 0 0
 .placeholder
   margin: 10px auto
   font-size: 1.1em
@@ -100,7 +109,19 @@
 .over-limit
   color: red
   border-color: red !important
-
+  
+.tags
+  clear: both
+  
+  li
+    display: inline
+    padding: em(6) em(10)
+    background: $baseColor
+    font-size: em(13)
+    opacity: 0.7
+    &:hover
+      opacity: 1
+      
 .show-question
   width: 90%
   margin: auto
@@ -118,17 +139,6 @@
       font-size: 1.4em
   .time
     float: left
-  .tags
-    clear: both
-    
-    li
-      display: inline
-      padding: em(6) em(10)
-      background: $baseColor
-      font-size: em(13)
-      opacity: 0.7
-      &:hover
-        opacity: 1
   .answers
     li
       position: relative
