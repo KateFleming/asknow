@@ -1,9 +1,10 @@
 /* Bourbon */
 @import "bourbon";
 
-/* Variables */
+/* Core */
 @import "mixins";
 @import "variables";
+@import "breakpoints";
 
 /* Stucture */
 @import "fonts";
