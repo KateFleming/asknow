@@ -13,7 +13,7 @@
           <div class="counter <%= "answered" if current_account.voted_on?(answer) %>"><%= answer.votes.count %></div>
           <% entry = answer.entry %>
           <div class="answer-entry"><%= entry.slice(0, 30) %><%= "..." if entry.size > 30 %></div>
-        </a><%= link_to "| Delete", answer_delete_path(answer), method: :delete if can? :destroy, answer %>
+        </a>
       </li>
     <% end %>
     <li class="suggest-answer">

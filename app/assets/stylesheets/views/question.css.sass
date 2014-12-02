@@ -24,42 +24,6 @@
     ul, a
       margin: 1em auto
       padding: .25em
-  .answers
-    padding: 0
-    margin: 0
-    li
-      background: $primaryColor
-      color: white
-      margin: 4px 0
-      border-radius: 2px
-      a
-        text-decoration: none
-        width: 100%
-        color: white
-        .counter
-          height: 100%
-          display: inline-block
-          position: relative
-          left: -4px
-          padding: 7px 13px
-          background: darken($primaryColor, 10%)
-          border-top-left-radius: 2px
-          border-bottom-left-radius: 2px
-          &.answered
-            background: $liveColor
-            color: white
-        .answer-entry
-          display: inline-block
-    // End answer li
-    .suggest-answer
-      background: none
-      font-size: 0.9em
-      padding-top: 15px
-      a
-        color: $lightColor
-  // End answers
-
-// End question
 
 .placeholder
   margin: 10px auto
@@ -141,7 +105,7 @@
 .show-question
   h1
     font-size: 2em
-    margin: em(5) 0
+    margin: em(10) 0
   .time
     float: left
   .tags
@@ -153,6 +117,26 @@
       background: $baseColor
       font-size: em(13)
       opacity: 0.7
-      
       &:hover
         opacity: 1
+  .answers
+    li
+      position: relative
+      &:hover
+        .delete-answer
+          display: inline-block
+    .delete-answer
+      position: absolute
+      display: none
+      width: auto
+      right: 10px
+      top: 10px
+  footer
+    text-align: center
+    input
+      margin: em(5)
+      
+      &[type=text]
+        width: 100%
+        padding: em(10)
+    

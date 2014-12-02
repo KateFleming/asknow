@@ -1,0 +1,35 @@
+.answers
+  padding: 0
+  margin: 0
+  li
+    background: $primaryColor
+    color: white
+    margin: 4px 0
+    border-radius: 2px
+    a
+      text-decoration: none
+      width: 100%
+      color: white
+      font-size: em(16)
+      .counter, .answer-entry
+        padding: 10px 0
+        
+      .counter
+        display: inline-block
+        position: relative
+        left: -4px
+        background: darken($primaryColor, 10%)
+        padding: 10px 15px
+        border-top-left-radius: 2px
+        border-bottom-left-radius: 2px
+        &.answered
+          background: $liveColor
+          color: white
+      .answer-entry
+        display: inline-block
+  .suggest-answer
+    background: none
+    font-size: 0.9em
+    padding-top: 15px
+    a
+      color: $lightColor

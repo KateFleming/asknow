@@ -15,7 +15,8 @@ class QuestionController < ApplicationController
     if @question.save
       redirect_to question_show_path(@question)
     else
-      render index
+      flash[:errors] = @question.errors.full_messages.join(", ")
+      redirect_to :back
     end
   end
   

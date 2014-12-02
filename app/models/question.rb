@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   # Validations
-  validates :entry, presence: true, length: { maximum: 100 }
+  validates :entry, presence: true, length: { maximum: 125 }
   
   # Relationships
   belongs_to :account
