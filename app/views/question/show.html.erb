@@ -18,8 +18,8 @@
   </div>
   <section class="tags">
     <ul>
-      <% @question.keywords.each do |tag| %>
-        <li><%= link_to "##{tag.name}" %></li>
+      <% @question.tags.each do |tag| %>
+        <li><%= link_to "##{tag.name}", gravity_path(tag.name) %></li>
       <% end %>
     </ul>
   </section>

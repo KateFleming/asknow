@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get    'recent'         => 'feed#recent', as: 'recent'
   post   'feed/add'       => 'feed#add', as: 'feed_add'
   get    'trending'       => 'feed#trending', as: 'trending'
+  get    'gravity/:tag'   => 'feed#gravity', as: 'gravity'
   
   # Account
   get    'account'           => 'account#panel', as: 'account_panel'

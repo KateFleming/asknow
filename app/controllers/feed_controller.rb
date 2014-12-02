@@ -37,6 +37,20 @@ class FeedController < ApplicationController
     render layout: "full-width"
   end
   
+  # Get questions by tag
+  def gravity
+    @question = Question.new
+    tag = params[:tag]
+    if Tag.exists?(name: tag)
+      @questions = Tag.find_by(name: tag).questions.order(:created_at).reverse
+      set_page_data Feed.filter_by_page(params[:page], @questions)
+      render layout: "full-width"
+    else
+      @questions = []
+      flash[:notice] = "Bummer, '#{params[:tag]}' tag exist. Why don't you tag something with it?"
+    end
+  end
+  
   def account
     if current_account.primary_feed
       redirect_to feed_show_path(current_account.primary_feed) and return
