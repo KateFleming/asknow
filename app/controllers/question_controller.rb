@@ -4,14 +4,12 @@ class QuestionController < ApplicationController
   end
   
   def ask
-    authorize! :create, @question
-    
     @question = Question.new({
       account: current_account,
       entry: question_params[:entry],
       tags: Tag.process_all(question_params[:tags])
     })
-    
+    authorize! :create, @question
     if @question.save
       redirect_to question_show_path(@question)
     else

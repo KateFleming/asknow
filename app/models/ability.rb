@@ -22,7 +22,7 @@ class Ability
       end
       
       # Members can view any other questions
-      can :view, Question
+      can [:view, :create], Question
       
       # Members can manager their own questions
       can :manage, Question do |question|
@@ -52,8 +52,8 @@ class Ability
         account.owns?(feed)
       end
       
-      # Guests can view any other questions
-      # can :view, Question
+      # Guests can view and post any other questions
+      can [:view, :create], Question
       
       # Guests can view any answer
       can :view, Answer
