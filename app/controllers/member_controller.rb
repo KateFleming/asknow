@@ -18,7 +18,7 @@ class MemberController < ApplicationController
       
       # Save the new member
       if @member.save
-        redirect_to session_verify
+        redirect_to session_not_verified
       else
         render :new
       end

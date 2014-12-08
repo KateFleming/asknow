@@ -1,5 +1,5 @@
 <main class="panel">
-  <h1>How's it going, <%= @account.name %>?</h1>
+  <h1>How's it going, <%= @account.display_name %>?</h1>
   <% if !@account.guest? %>
     <%= link_to "Logout", session_logout_path, method: "post" %>
   <% else %>

@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     member = Account.find_by(email: login_params[:email]).try(:authenticate, login_params[:password])
     if member
       if member.code?
-        redirect_to :session_verify and return
+        redirect_to :session_not_verified and return
       else
         session[:account_id] = member.id
         session[:account_type] = member.type
@@ -26,7 +26,7 @@ class SessionController < ApplicationController
     reset_session
   end
   
-  def verify
+  def not_verified
     
   end
   

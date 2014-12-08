@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get    'gravity/:tag'   => 'feed#gravity', as: 'gravity'
   
   # Account
-  get    'account'           => 'account#panel', as: 'account_panel'
+  get    'account'               => 'account#panel', as: 'account_panel'
+  get    'account/verify/:code'  => 'account#verify', as: 'account_verify'
   
   # Member
   get    'member/new'       => 'member#new', as: 'member_new'
@@ -23,10 +24,10 @@ Rails.application.routes.draw do
   get    'member/success'   => 'member#success'
   
   # Session
-  get    'session/login'    => 'session#login', as: 'session_login'
-  post   'session/login'    => 'session#authenticate'
-  post   'session/logout'   => 'session#logout', as: 'session_logout'
-  get    'session/verify'    => 'session#verify', as: 'session_verify'
+  get    'session/login'        => 'session#login', as: 'session_login'
+  post   'session/login'        => 'session#authenticate'
+  post   'session/logout'       => 'session#logout', as: 'session_logout'
+  get    'session/not_verified' => 'session#not_verified', as: 'session_not_verified'
   
   # Question
   get    'question'             => 'question#index'
