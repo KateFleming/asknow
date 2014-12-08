@@ -18,6 +18,7 @@ class MemberController < ApplicationController
       
       # Save the new member
       if @member.save
+        TransactionMailer.welcome(@member).deliver
         redirect_to session_not_verified
       else
         render :new
