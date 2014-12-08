@@ -42,6 +42,8 @@ gem 'bourbon'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'mandrill_mailer'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
