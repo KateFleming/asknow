@@ -1,3 +1,5 @@
+require 'digest'
+require 'digest/sha2'
 class Account < ActiveRecord::Base
   # Use secure password, but only require when creating a member
   has_secure_password validations: false
@@ -25,10 +27,6 @@ class Account < ActiveRecord::Base
     else
       raise "Unknown account type"
     end
-  end
-  
-  def type_specific_validation
-    type.validate_account(self)
   end
   
   def banned?
@@ -70,5 +68,16 @@ class Account < ActiveRecord::Base
   
   def primary_feed
     Feed.find_by(account: self, primary: true)
+  end
+  
+  def generate_code
+    salt = (0...8).map { (65 + rand(26)).chr }.join
+    self.code = ::Digest::SHA2.new.hexdigest(email + salt)
+  end
+  
+  private
+  # Validations
+  def type_specific_validation
+    type.validate_account(self)
   end
 end

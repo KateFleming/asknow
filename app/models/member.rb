@@ -41,5 +41,5 @@ class Member
     @password_length_validator ||= ActiveModel::Validations::LengthValidator.new(
           attributes: :password, :minimum => 5, :class => Account
     )
-  end
+  end    
 end

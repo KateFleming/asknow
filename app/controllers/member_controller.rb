@@ -13,9 +13,12 @@ class MemberController < ApplicationController
       @member.account_type = "member"
       @member.assign_attributes(member_params)
       
+      # Create verify email code
+      @member.generate_code
+      
       # Save the new member
       if @member.save
-        redirect_to account_panel_path
+        redirect_to session_verify
       else
         render :new
       end

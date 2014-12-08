@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get    'session/login'    => 'session#login', as: 'session_login'
   post   'session/login'    => 'session#authenticate'
   post   'session/logout'   => 'session#logout', as: 'session_logout'
+  get    'session/verify'    => 'session#verify', as: 'session_verify'
   
   # Question
   get    'question'             => 'question#index'
