@@ -33,4 +33,23 @@ class AccountController < ApplicationController
       redirect_to :session_login
     end
   end
+  
+  # Account is not verified
+  def not_verified
+    account_id = params[:id]
+    @account = Account.find(account_id)
+  end
+  
+  # Resend verification code
+  def resend_code
+    @account = Account.find(params[:account_id])
+    if @account.member? || @account.admin?
+      TransactionMailer.verify(@account).deliver
+      flash[:notice] = "You're email is on its way."
+      redirect_to :back and return
+    else
+      flash[:error] = "Boo. You're not a member yet."
+      redirect_to :back and return
+    end
+  end
 end

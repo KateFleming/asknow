@@ -18,8 +18,8 @@ class MemberController < ApplicationController
       
       # Save the new member
       if @member.save
-        TransactionMailer.welcome(@member).deliver
-        redirect_to session_not_verified
+        TransactionMailer.verify(@member).deliver
+        redirect_to account_not_verified_path(@member)
       else
         render :new
       end
