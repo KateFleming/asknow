@@ -1,4 +1,6 @@
 class QuestionController < ApplicationController
+  before_filter :require_verified_account
+  
   def index
     @question = Question.new
   end

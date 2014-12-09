@@ -1,4 +1,6 @@
 class VoteController < ApplicationController
+  before_filter :require_verified_account
+  
   def cast
     @answer = Answer.find(params[:id])
     @question = @answer.question

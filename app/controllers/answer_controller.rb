@@ -1,4 +1,6 @@
 class AnswerController < ApplicationController
+  before_filter :require_verified_account
+  
   def new
     @question = Question.find(params[:id])
     @answer = Answer.new(answer_params)
