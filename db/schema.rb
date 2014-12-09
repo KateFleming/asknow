@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208183930) do
+ActiveRecord::Schema.define(version: 20141209052902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,33 @@ ActiveRecord::Schema.define(version: 20141208183930) do
   end
 
   add_index "feeds", ["account_id"], name: "index_feeds_on_account_id", using: :btree
+
+  create_table "group_member_permissions", force: true do |t|
+    t.string   "name"
+    t.boolean  "owner"
+    t.boolean  "read"
+    t.boolean  "write"
+    t.boolean  "invite"
+    t.boolean  "remove"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "powers"
+  end
+
+  create_table "group_members", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "account_id"
+    t.integer  "group_member_permission"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.boolean  "private"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "question_banks", force: true do |t|
     t.integer  "question_id"
