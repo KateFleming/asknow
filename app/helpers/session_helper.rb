@@ -5,7 +5,7 @@ module SessionHelper
   
   # If a member hasn't verified their account, make them do that
   def require_verified_account
-    if current_account.code
+    if current_account.code.present?
       redirect_to account_not_verified_path(current_account) and return
     end
   end
