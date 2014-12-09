@@ -1,16 +1,16 @@
 <% content_for :body_class, "landing-page" %>
 <main class="landing">
 <img class="logo" src="/assets/logo.svg"/>
-<div>
-  <h1 class="landingslogan">Get <em>real-time</em> answers from <em>real people</em> <span>for current events, opinions, local knowledge.</span></h1>
-</div>
-<div class="landing-links">
-  <%= link_to "What's Trending", :trending, class: "button" %>
-  <%= link_to "Ask a Question", :question_ask, class: "button" %>
-  <section>
-    <%= link_to "Learn More", :trending %>
-    &middot;
-    <%= link_to "Login", :session_login %>
-  </section>
-</div>
+  <div>
+    <h1 class="landingslogan">Get <em>real-time</em> answers from <em>real people</em> <span>for current events, opinions, local knowledge.</span></h1>
+  </div>
+  <div class="landing-links">
+    <%= link_to "What's Trending", :trending, class: "button" %>
+    <%= link_to "Ask a Question", :question_ask, class: "button" %>
+    <section>
+      <%= link_to "Login", :session_login %>
+      &middot;
+      <%= link_to "Sign Up", :member_new %>
+    </section>
+  </div>
 </main>
