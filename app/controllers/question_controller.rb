@@ -9,6 +9,7 @@ class QuestionController < ApplicationController
     @question = Question.new({
       account: current_account,
       entry: question_params[:entry],
+      group_id: question_params[:group],
       tags: Tag.process_all(question_params[:tags])
     })
     authorize! :create, @question
@@ -47,6 +48,6 @@ class QuestionController < ApplicationController
   end
   private
   def question_params
-    params.require(:question).permit(:entry, :tags)
+    params.require(:question).permit(:entry, :tags, :group)
   end
 end

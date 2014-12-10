@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 GroupMemberPermission.create([
   {
+    id: 1,
     name: "powerizer",
     powers: "can invite other members",
     read: true,
@@ -14,6 +15,7 @@ GroupMemberPermission.create([
     invite: true,
     remove: true
   },{
+    id: 2,
     name: "particpator",
     powers: "can post",
     read: true,
@@ -21,6 +23,7 @@ GroupMemberPermission.create([
     invite: true,
     remove: false
   },{
+    id: 3,
     name: "propector",
     powers: "can only watch",
     read: true,

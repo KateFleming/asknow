@@ -13,6 +13,9 @@
       <%= f.text_area :entry, class: "feed-question-field", title: "Ask something...", placeholder: "Ask something..." %>
     </div>
     <footer>
+      <% if defined? question_group %>
+        <%= f.hidden_field :group, value: question_group %>
+      <% end %>
       <%= f.hidden_field :tags %>
       <div class="tag-bin"></div>
       <%= f.submit "Ask Question", class: "feed-question-submit" %>

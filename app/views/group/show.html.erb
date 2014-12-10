@@ -1,3 +1,7 @@
 <h1><%= @group.name %></h1>
 <%= @group.visibility %>
 <%= @group.default_member_permission.powers %>
+<%= render 'question/form', :question_group => @group.id %>
+<section class="feed-content">
+  <%= render 'feed/questions'%>
+</section>

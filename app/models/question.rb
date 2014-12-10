@@ -5,6 +5,8 @@ class Question < ActiveRecord::Base
   # Relationships
   belongs_to :account
   belongs_to :feed
+  belongs_to :group
+  
   has_many :answers, dependent: :destroy
   has_many :question_banks, dependent: :destroy
   has_and_belongs_to_many :tags
