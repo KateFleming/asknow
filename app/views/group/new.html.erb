@@ -21,7 +21,7 @@
         </li>
         <li>
           Default members
-          <select name="default_permission">
+          <select name="group[default_permission]">
             <% GroupMemberPermission.all.each do |p| %>
               <option value="<%= p.id %>"><%= p.powers %></option>
             <% end %>
