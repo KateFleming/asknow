@@ -20,4 +20,21 @@ class Question < ActiveRecord::Base
     # Return a count of votes and answers
     answers.count + votes
   end
+  
+  # Is the question public?
+  def public?
+    # If it's not in a group, it's public
+    if group
+      !group.private
+    else
+      true
+    end
+  end
+  
+  # Get only public questions
+  def self.only_public
+    self.select do |question|
+      question.public?
+    end
+  end
 end
