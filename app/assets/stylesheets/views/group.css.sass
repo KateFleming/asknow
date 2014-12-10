@@ -1,0 +1,20 @@
+// Place all the styles related to the group controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.new-group
+  width: 100%
+  
+  +respond-to("medium")
+    width: 600px
+    
+  input[type=text]
+    width: 100%
+    +respond-to("medium")
+      width: 60%
+  input[type=submit]
+    margin: 30px auto
+    width: 50%
+    display: block
+  .group-options
+    li
+      margin: 10px 0

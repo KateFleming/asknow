@@ -1,0 +1,36 @@
+<h1>Start a New Group</h1>
+<main class="new-group">
+  <%= form_for @group, :url => group_create_path do |f| %>
+    <% if @group.errors.any? %>
+      <div>
+        <ul>
+          <% @group.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <section class="bin">
+      <div>
+        <h3>Pick a name that describes your group.</h3>
+        <%= f.text_field :name, placeholder: "Group name..." %>
+      </div>
+      <ul class="group-options">
+        <li>
+          <%= f.check_box :private, checked: "checked" %> Private
+        </li>
+        <li>
+          Default members
+          <select name="default_permission">
+            <% GroupMemberPermission.all.each do |p| %>
+              <option value="<%= p.id %>"><%= p.powers %></option>
+            <% end %>
+          </select>
+        </li>
+      </ul>
+    </section>
+    <div>
+      <%= f.submit "Create Group" %>
+    </div>
+  <% end %>
+</main>
