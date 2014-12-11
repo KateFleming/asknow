@@ -28,14 +28,19 @@ module SessionHelper
     # Reset current account
     current_account
     
-    # Check for any redirects
-    check_persistent_routes("login")
+    # Check for any login-related redirects
+    if check_persistent_routes("login")
+      return "redirect"
+    end
   end
   
   # Check for any persistent routes
   def check_persistent_routes(dest)
     if defined? session[:routes][dest]
-      redirect_to session[:routes][dest] and return
+      fly_me_there = session[:routes][dest]
+      if fly_me_there
+        redirect_to fly_me_there and return true
+      end
     end
   end
   

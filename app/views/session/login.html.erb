@@ -1,4 +1,7 @@
 <h1>Login</h1>
+<section>
+  <p>Not a member? <%= link_to "Create an Account", :member_new, class: "no-upcase" %></p>
+</section>
 <main class="login bin">
     <%= form_tag session_login_path, class: "form", id: "form1" do %>
   <% if @login_errors %>

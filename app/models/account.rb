@@ -10,7 +10,7 @@ class Account < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :votes
-  has_many :group_members
+  has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members
   
   ROLES = %w[admin member guest banned]

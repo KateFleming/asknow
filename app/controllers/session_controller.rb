@@ -11,9 +11,9 @@ class SessionController < ApplicationController
         redirect_to account_not_verified_path(member) and return
       else
         # Login the member
-        login_account(member)
-        
-        redirect_to trending_path
+        unless login_account(member) == "redirect"
+          redirect_to :trending and return
+        end
       end
     else
       flash[:error] = "Oops! Something went wrong, please try again!"

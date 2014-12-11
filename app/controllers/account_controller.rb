@@ -16,12 +16,12 @@ class AccountController < ApplicationController
       # Set the code to empty
       @account.code = ""
       if @account.save
+        flash[:notice] = "Your account has been verified. And we love you for it."
         
         # Login the user
-        login_account(@account)
-        
-        flash[:notice] = "Your account has been verified. And we love you for it."
-        redirect_to :trending
+        unless login_account(@account) == "redirect"
+          redirect_to :trending and return
+        end
       else
         flash[:errror] = @account.errors.full_messages.join(",")
       end
