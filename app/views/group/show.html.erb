@@ -1,7 +1,22 @@
-<h1><%= @group.name %></h1>
-<%= @group.visibility %>
-<%= @group.default_member_permission.powers %>
-<%= render 'question/form', :question_group => @group.id %>
-<section class="feed-content">
-  <%= render 'feed/questions'%>
-</section>
+<%= render 'feed/nav', :live => @group.id %>
+<div class="show-group">
+  <main class="group-questions">  
+    <%= render 'question/form', :question_group => @group %>
+    <section class="feed-content">
+      <%= render 'feed/questions'%>
+    </section>
+  </main>
+  <aside class="group-details">
+    <h1><%= @group.name %></h1>
+    <p>This group is <%= @group.visibility %></p>
+    <h2>Group Members</h2>
+    <ul class="group-members">
+      <% @group.accounts.each do |account| %>
+        <li><%= account.display_name %></li>
+      <% end %>
+      <% if @group.default_member_permission.invite %>
+        <li>Share this group</li>
+      <% end %>
+    </ul>
+  </aside>
+</div>

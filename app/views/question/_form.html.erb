@@ -10,11 +10,16 @@
       </div>
     <% end %>
     <div>
-      <%= f.text_area :entry, class: "feed-question-field", title: "Ask something...", placeholder: "Ask something..." %>
+      <% if defined? question_group %>
+        <% group_name = question_group.name %>
+      <% else %>
+        <% group_name = "" %>
+      <% end %>
+      <%= f.text_area :entry, class: "feed-question-field", title: "Ask #{group_name} something...", placeholder: "Ask #{group_name} something..." %>
     </div>
     <footer>
       <% if defined? question_group %>
-        <%= f.hidden_field :group, value: question_group %>
+        <%= f.hidden_field :group, value: question_group.id %>
       <% end %>
       <%= f.hidden_field :tags %>
       <div class="tag-bin"></div>
