@@ -1,6 +1,9 @@
 <%= render 'feed/nav' %>
 <main class="show-question">
   <h1><%= @question.entry %></h1>
+  <% if @question.group %>
+    <p>In <%= link_to @question.group.name, group_show_path(@question.group) %></p>
+  <% end %>
   <h2 class="time">Asked <%= time_ago_in_words(@question.created_at) %> ago</h2>
   <div class="actions">
     <ul>

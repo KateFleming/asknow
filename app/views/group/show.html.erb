@@ -1,7 +1,9 @@
 <%= render 'feed/nav', :live => @group.id %>
 <div class="show-group">
-  <main class="group-questions">  
+  <div class="group-question-form">
     <%= render 'question/form', :question_group => @group %>
+  </div>
+  <main class="group-questions">  
     <section class="feed-content">
       <%= render 'feed/questions'%>
     </section>
