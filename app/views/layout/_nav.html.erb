@@ -2,19 +2,23 @@
 <nav class="menu">
   <button class="close-menu"><img src="/assets/close-menu.svg" alt="Close"></button>
   <ul>
-    <li><%= link_to "Ask a Question", :question %></li>
+    
     <li><%= link_to "Trending", :trending %></li>
     <li><%= link_to "Recent", :recent %></li>
-    <% if current_account.member? %>
-    <li><%= link_to "My Feed", :feed %></li>
-    <% end %>
+    <p>Account</p>
+    <li><%= link_to "Ask a Question", :question %></li>
     <% if current_account.guest? %>
     <li><%= link_to "New Account", :member_new %></li>
     <li><%= link_to "Login", :session_login %></li>
     <% else %>
-    <li><%= link_to "New Group", :group_new %></li>
     <li><%= link_to "Panel", :account_panel %></li>
     <li><%= link_to "Logout", :session_logout, method: "post"  %></li>
+    <% end %>
+    <p>Groups</p>
+    <% if current_account.groups %>
+      <% current_account.groups.limit(6).each do |group| %>
+        <li><%= link_to group.name, group_show_path(group) %></li>
+      <% end %>
     <% end %>
   </ul>
 </nav>

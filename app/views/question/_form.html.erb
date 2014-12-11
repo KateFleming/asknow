@@ -13,7 +13,7 @@
       <% if defined? question_group %>
         <% placeholder = "Ask #{ question_group.name } something..." %>
       <% else %>
-        <% placeholder = "Ask something..." %>
+        <% placeholder = "Ask anyone something..." %>
       <% end %>
       <%= f.text_area :entry, class: "feed-question-field", title: placeholder, placeholder: placeholder %>
     </div>
