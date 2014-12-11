@@ -11,11 +11,11 @@
     <% end %>
     <div>
       <% if defined? question_group %>
-        <% group_name = question_group.name %>
+        <% placeholder = "Ask #{ question_group.name } something..." %>
       <% else %>
-        <% group_name = "" %>
+        <% placeholder = "Ask something..." %>
       <% end %>
-      <%= f.text_area :entry, class: "feed-question-field", title: "Ask #{group_name} something...", placeholder: "Ask #{group_name} something..." %>
+      <%= f.text_area :entry, class: "feed-question-field", title: placeholder, placeholder: placeholder %>
     </div>
     <footer>
       <% if defined? question_group %>
