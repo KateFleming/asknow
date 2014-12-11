@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210011159) do
+ActiveRecord::Schema.define(version: 20141210234638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,10 +69,10 @@ ActiveRecord::Schema.define(version: 20141210011159) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
-    t.boolean  "private"
+    t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "default_permission"
+    t.integer  "default_permission", default: 1
   end
 
   create_table "question_banks", force: true do |t|
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141210011159) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.integer  "rating"
-    t.integer  "group_id"
+    t.integer  "group_id",   default: 0
   end
 
   create_table "questions_tags", force: true do |t|

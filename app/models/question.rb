@@ -1,7 +1,8 @@
 class Question < ActiveRecord::Base
   # Validations
   validates :entry, presence: true, length: { maximum: 125 }
-  
+  validates :account, presence: true
+    
   # Relationships
   belongs_to :account
   belongs_to :feed
@@ -31,10 +32,12 @@ class Question < ActiveRecord::Base
     end
   end
   
+  scope :only_public, -> { joins(:group).where.not('groups.public' => false) }
+  
   # Get only public questions
-  def self.only_public
-    self.select do |question|
-      question.public?
-    end
-  end
+  # def self.only_public
+  #   self.select do |question|
+  #     question.public?
+  #   end
+  # end
 end

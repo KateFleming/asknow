@@ -1,4 +1,6 @@
 class FeedController < ApplicationController
+  # How many items show per page
+  WillPaginate.per_page = 18
   
   def show
     @question = Question.new
@@ -17,13 +19,14 @@ class FeedController < ApplicationController
   
   # What's hot
   def trending
-    
     @question = Question.new
-    @questions = Question.all
-    @questions = @questions.sort_by do |question|
+    
+    # Get a list of questions sorted by rating
+    @questions = Question.all.only_public.sort_by do |question|
       question.rating.to_i
     end
     
+    # Only take ten percent of public questions
     @questions.reverse!.take(@questions.count * 0.1)
     set_page_data Feed.filter_by_page(params[:page], @questions)
     render layout: "full-width"
@@ -32,8 +35,10 @@ class FeedController < ApplicationController
   # Get all recent questions
   def recent
     @question = Question.new
-    @questions = Question.all.order(:created_at).reverse
-    set_page_data Feed.filter_by_page(params[:page], @questions)
+    @questions = Question.order("created_at desc").paginate({
+      :page => params[:page]
+    })
+
     render layout: "full-width"
   end
   
@@ -91,11 +96,5 @@ class FeedController < ApplicationController
       flash[:error] = "You already have that question in your feed"
       redirect_to :feed
     end
-  end
-  private
-  def set_page_data(page_data)
-    @questions = page_data[:items]
-    @total_pages = page_data[:total_pages]
-    @current_page = page_data[:current_page]
   end
 end

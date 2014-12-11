@@ -7,23 +7,6 @@ class Feed < ActiveRecord::Base
   belongs_to :account
   has_many :question_banks, dependent: :destroy
   
-  def self.filter_by_page(page, items)
-    # Pagination
-    if page
-      @page = page
-    else
-      @page = 1
-    end
-    
-    items_per_page = 18
-    starting = items_per_page * (@page.to_i - 1)
-    {
-      items: items.slice(starting, items_per_page),
-      current_page: @page,
-      total_pages: (items.count.to_f / items_per_page.to_f).ceil
-    }
-  end
-  
   # Validation
   # Each account can only have one primary feed
   def one_primary_per_account

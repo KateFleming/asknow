@@ -6,12 +6,15 @@ class QuestionController < ApplicationController
   end
   
   def ask
-    @question = Question.new({
-      account: current_account,
-      entry: question_params[:entry],
-      group_id: question_params[:group],
-      tags: Tag.process_all(question_params[:tags])
-    })
+    # Create a new question
+    new_params = question_params
+    new_params[:tags] = Tag.process_all(new_params[:tags])
+    if new_params[:group]
+      new_params[:group] = Group.find(new_params[:group])
+    end
+    @question = Question.new(new_params)
+    @question.account = current_account
+    
     authorize! :create, @question
     if @question.save
       redirect_to question_show_path(@question)

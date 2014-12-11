@@ -35,12 +35,9 @@ class GroupController < ApplicationController
     
     @question = Question.new
     @questions = @group.questions
-    @questions = @questions.sort_by do |question|
-      question.rating.to_i
-    end
-    
-    @questions.reverse!.take(@questions.count * 0.1)
-    set_page_data Feed.filter_by_page(params[:page], @questions)
+    @questions = @questions.order("created_at desc").paginate({
+      page: params[:page]
+    })
     
     render layout: "full-width"
   end

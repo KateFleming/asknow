@@ -12,10 +12,10 @@ class Group < ActiveRecord::Base
   end
   
   def visibility
-    if private
-      "private"
-    else
+    if public
       "public"
+    else
+      "private"
     end
   end
 end
