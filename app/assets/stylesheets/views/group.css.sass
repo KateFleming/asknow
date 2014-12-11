@@ -20,15 +20,17 @@
       margin: 10px 0
 
 .show-group
-  padding: 30px
+
+  +respond-to("medium")
+    padding: 30px
+    
   .group-question-form
     margin-bottom: 20px
   .group-details
+    margin-top: 10px
     padding: 20px
     background: $baseColor
     color: $darkColor
-    display: inline-block
-    width: 29%
     vertical-align: top
     h1
       margin: 2px 0
@@ -39,7 +41,14 @@
     input[type=text]
       font-size: 12px
       width: 80%
+    +respond-to("medium")
+      display: inline-block
+      width: 29%
   .group-questions
-    display: inline-block
-    width: 70%
     vertical-align: top
+    +respond-to("medium")
+      display: inline-block
+      width: 70%
+    
+    .question
+      width: 90%
