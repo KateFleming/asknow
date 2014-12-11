@@ -22,20 +22,17 @@ class FeedController < ApplicationController
     @question = Question.new
     
     # Get a list of questions sorted by rating
-    @questions = Question.all.only_public.sort_by do |question|
-      question.rating.to_i
-    end
+    @questions = Question.only_public.order("rating desc").where.not(rating: nil).paginate({
+      :page => params[:page]
+    })
     
-    # Only take ten percent of public questions
-    @questions.reverse!.take(@questions.count * 0.1)
-    set_page_data Feed.filter_by_page(params[:page], @questions)
     render layout: "full-width"
   end
   
   # Get all recent questions
   def recent
     @question = Question.new
-    @questions = Question.order("created_at desc").paginate({
+    @questions = Question.only_public.order("created_at desc").paginate({
       :page => params[:page]
     })
 
