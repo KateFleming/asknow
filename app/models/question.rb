@@ -32,12 +32,6 @@ class Question < ActiveRecord::Base
     end
   end
   
-  scope :only_public, -> { joins(:group).where.not('groups.public' => false) }
+  scope :only_public, -> { where(group: nil) }
   
-  # Get only public questions
-  # def self.only_public
-  #   self.select do |question|
-  #     question.public?
-  #   end
-  # end
 end

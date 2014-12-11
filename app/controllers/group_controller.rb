@@ -46,10 +46,4 @@ class GroupController < ApplicationController
   def group_params
     params.require(:group).permit(:name, :private, :default_permission)
   end
-  
-  def set_page_data(page_data)
-    @questions = page_data[:items]
-    @total_pages = page_data[:total_pages]
-    @current_page = page_data[:current_page]
-  end
 end

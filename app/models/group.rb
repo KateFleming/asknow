@@ -10,12 +10,4 @@ class Group < ActiveRecord::Base
   def default_member_permission
     GroupMemberPermission.find(default_permission)
   end
-  
-  def visibility
-    if public
-      "public"
-    else
-      "private"
-    end
-  end
 end
