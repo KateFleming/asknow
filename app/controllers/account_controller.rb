@@ -18,11 +18,7 @@ class AccountController < ApplicationController
       if @account.save
         
         # Login the user
-        session[:account_id] = @account.id
-        session[:account_type] = @account.type
-      
-        # Reset current account
-        current_account
+        login_account(@account)
         
         flash[:notice] = "Your account has been verified. And we love you for it."
         redirect_to :trending

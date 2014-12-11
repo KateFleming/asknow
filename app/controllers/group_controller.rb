@@ -42,6 +42,13 @@ class GroupController < ApplicationController
     render layout: "full-width"
   end
   
+  # You just got invited to a group
+  def invite
+    session[:path_persist] = {
+      
+    }
+  end
+  
   private
   def group_params
     params.require(:group).permit(:name, :private, :default_permission)

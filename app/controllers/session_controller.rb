@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  
   def login
     
   end
@@ -9,11 +10,9 @@ class SessionController < ApplicationController
       if member.code?
         redirect_to account_not_verified_path(member) and return
       else
-        session[:account_id] = member.id
-        session[:account_type] = member.type
-      
-        # Reset current account
-        current_account
+        # Login the member
+        login_account(member)
+        
         redirect_to trending_path
       end
     else

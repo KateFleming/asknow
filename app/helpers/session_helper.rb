@@ -20,6 +20,25 @@ module SessionHelper
     @current_account
   end
   
+  def login_account(account)
+    # Set session variables
+    session[:account_id] = account.id
+    session[:account_type] = account.type
+    
+    # Reset current account
+    current_account
+    
+    # Check for any redirects
+    check_persistent_routes("login")
+  end
+  
+  # Check for any persistent routes
+  def check_persistent_routes(dest)
+    if defined? session[:routes][dest]
+      redirect_to session[:routes][dest] and return
+    end
+  end
+  
   # For CanCan
   def current_user
     current_account

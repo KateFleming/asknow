@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   get    'group/new'          => 'group#new', as: 'group_new'
   post   'group/create'       => 'group#create', as: 'group_create'
   get    'group/:id'          => 'group#show', as: 'group_show'
-  get    '/i/:code' => 'group#invite', as: 'group_invite'
+  get    '/i/:code'           => 'group#invite', as: 'group_invite'
   
   root   'landing#index'
 end
