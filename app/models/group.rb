@@ -7,6 +7,8 @@ class Group < ActiveRecord::Base
   has_many :group_members
   has_many :accounts, through: :group_members
   
+  before_save :generate_invite_code
+  
   def default_member_permission
     GroupMemberPermission.find(default_permission)
   end

@@ -8,14 +8,12 @@
   </main>
   <aside class="group-details">
     <h1><%= @group.name %></h1>
-    <p>This is a private group.</p>
+    <p>Invite anyone to <%= @group.name %></p>
+    <input type="text" class="auto-highlight" value="<%= group_invite_url(@group.invite_code) %>">
     <h2>Group Members</h2>
     <ul class="group-members">
       <% @group.accounts.each do |account| %>
         <li><%= account.display_name %></li>
-      <% end %>
-      <% if @group.default_member_permission.invite %>
-        <li>Share this group</li>
       <% end %>
     </ul>
   </aside>

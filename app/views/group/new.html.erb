@@ -17,9 +17,6 @@
       </div>
       <ul class="group-options">
         <li>
-          <%= f.check_box :public %> Public
-        </li>
-        <li>
           Default members
           <select name="group[default_permission]">
             <% GroupMemberPermission.all.each do |p| %>

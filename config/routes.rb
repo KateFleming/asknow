@@ -44,9 +44,10 @@ Rails.application.routes.draw do
   post   'answer/:id/vote'   => 'vote#cast', as: 'vote_cast'
 
   # Groups
-  get    'group/new'       => 'group#new', as: 'group_new'
-  post   'group/create'    => 'group#create', as: 'group_create'
-  get    'group/:id'       => 'group#show', as: 'group_show'
+  get    'group/new'          => 'group#new', as: 'group_new'
+  post   'group/create'       => 'group#create', as: 'group_create'
+  get    'group/:id'          => 'group#show', as: 'group_show'
+  get    '/i/:code' => 'group#invite', as: 'group_invite'
   
   root   'landing#index'
 end
