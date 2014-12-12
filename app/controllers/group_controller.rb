@@ -7,6 +7,7 @@ class GroupController < ApplicationController
     # Add group info
     @group = Group.new(group_params)
     
+    authorize! :create, @group
     # Save the group
     if @group.save
       # Add the user a member

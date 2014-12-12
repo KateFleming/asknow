@@ -42,6 +42,9 @@ class Ability
         account.owns?(vote)
       end
       
+      # Members can manage their own groups
+      can :manage, Group
+      
       # Members can join groups
       can :join, Group
     elsif account.guest?
