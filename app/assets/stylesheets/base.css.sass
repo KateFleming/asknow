@@ -76,3 +76,19 @@ input[type=text], input[type=email], input[type=tel], input[type=password]
 textarea
   font-family: "Glober"
   font-weight: 500
+
+/* Flashes */
+.page-notices
+  text-align: center
+  li
+    display: inline-block
+    margin: 10px
+    padding: 10px 30px
+    color: white
+    font-weight: 500
+    +border-radius
+    
+    &.notice
+      background: $liveColor
+    &.error
+      background: red

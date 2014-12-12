@@ -2,7 +2,4 @@
   <% live = live || "" %>
   <%= link_to "Trending", :trending, class: (live == "trending" ? "live" : "") %>
   <%= link_to "Recent", :recent, class: (live == "recent" ? "live" : "") %>
-  <% current_account.groups.limit(3).each do |group| %>
-    <%= link_to group.name, group_show_path(group), class: (live == group.id ? "live" : "") %>
-  <% end %>
 </nav>

@@ -5,18 +5,18 @@ class SessionController < ApplicationController
   end
   
   def authenticate
-    member = Account.find_by(email: login_params[:email]).try(:authenticate, login_params[:password])
-    if member
-      if member.code?
-        redirect_to account_not_verified_path(member) and return
+    @account = Account.find_by(email: login_params[:email]).try(:authenticate, login_params[:password])
+    if @account
+      if @account.code?
+        redirect_to account_not_verified_path(@account) and return
       else
         # Login the member
-        unless login_account(member) == "redirect"
+        unless login_account(@account) == "redirect"
           redirect_to :trending and return
         end
       end
     else
-      flash[:error] = "Oops! Something went wrong, please try again!"
+      flash.now[:error] = "That didn't work. Try again."
       render 'login'
     end
   end

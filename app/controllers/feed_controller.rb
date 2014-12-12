@@ -39,13 +39,19 @@ class FeedController < ApplicationController
     render layout: "full-width"
   end
   
+  # Search for stuff
+  def search
+    
+  end
+  
   # Get questions by tag
   def gravity
     @question = Question.new
     tag = params[:tag]
     if Tag.exists?(name: tag)
-      @questions = Tag.find_by(name: tag).questions.order(:created_at).reverse
-      set_page_data Feed.filter_by_page(params[:page], @questions)
+      @questions = Tag.find_by(name: tag).questions.order("created_at desc").paginate({
+        page: params[:page]
+      })
       render layout: "full-width"
     else
       @questions = []
