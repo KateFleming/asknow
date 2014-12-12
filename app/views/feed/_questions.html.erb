@@ -1,4 +1,5 @@
 <section class="questions-container">
+  <%= "<p>There's no questions here yet.</p>".html_safe if @questions.count < 1 %>
   <% @questions.each do |question| %>
     <% @question = question %>
     <%= render 'feed/question' %>

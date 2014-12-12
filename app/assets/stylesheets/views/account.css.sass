@@ -1,5 +1,7 @@
 .panel
   text-align: center
+  +respond-to("medium")
+    min-width: 780px
   h1
     font-size: 2em
     font-weight: 300
@@ -14,6 +16,7 @@
   .panel-groups
     text-align: left
     padding: 0 10px 10px 10px
+    min-width: 300px
     +respond-to("medium")
       width: 20%
       padding: 0

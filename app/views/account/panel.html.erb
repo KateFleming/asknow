@@ -1,8 +1,5 @@
 <main class="panel">
   <h1>Feel at home, <strong ><%= @account.display_name %></strong></h1>
-  <% if @account.guest? %>
-   <%= link_to "Login", session_login_path %>
-  <% end %>
   <div class="panel-questions">
     <h2>Questions you've asked</h2>
     <%= render 'feed/questions' %>
