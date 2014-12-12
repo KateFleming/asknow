@@ -68,7 +68,7 @@ class GroupController < ApplicationController
 
         # Try saving the member
         if group_member.save
-          flash[:notice] = "Welcome to the group, #{current_account.display_name}"
+          flash[:notice] = "Welcome to #{@group.name}, #{current_account.display_name}"
           redirect_to group_show_path(@group)
         else
           flash[:error] = group_member.errors.full_messages.join(",")
