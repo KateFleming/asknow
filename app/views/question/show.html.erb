@@ -4,7 +4,7 @@
   <% if @question.group %>
     <p>In <%= link_to @question.group.name, group_show_path(@question.group) %></p>
   <% end %>
-  <h2 class="time">Asked <%= time_ago_in_words(@question.created_at) %> ago</h2>
+  <h2 class="time">Asked <%= time_ago_in_words(@question.created_at) %> ago by <%= @question.account.display_name %></h2>
   <div class="actions">
     <ul>
       <li>
@@ -15,7 +15,7 @@
         <%= form_tag feed_add_path, id: "add-to-feed" do %>
           <%= hidden_field_tag :question_id, @question.id %>
         <% end %>
-        <a href="#" onclick="$('#add-to-feed').submit()" class="button">Add to Feed</a>
+        <!-- <a href="#" onclick="$('#add-to-feed').submit()" class="button">Add to Feed</a> -->
       </li>
     </ul>
   </div>

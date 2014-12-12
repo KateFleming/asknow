@@ -1,12 +1,24 @@
 .panel
-  .questions-container
-    width: 100%
-    text-align: center
-    .question
-      margin: 10px 0
+  text-align: center
+  h1
+    font-size: 2em
+    font-weight: 300
+  h2
+    font-size: 1.5em
+  
+  .panel-groups, .panel-questions
     +respond-to("medium")
-      width: $viewport-medium * 0.78
-      .question
-        margin: 5px
-    +respond-to("large")
-      width: $viewport-large * 0.79
+      display: inline-block
+      vertical-align: top
+      text-align: left
+  .panel-groups
+    text-align: left
+    padding: 0 10px 10px 10px
+    +respond-to("medium")
+      width: 20%
+      padding: 0
+  .panel-questions
+    .question
+      width: 90%
+    +respond-to("medium")
+      width: 60%
