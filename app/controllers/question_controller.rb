@@ -29,6 +29,13 @@ class QuestionController < ApplicationController
     @answer = Answer.new
     @vote = Vote.new
     
+    if @question.group
+      unless current_account.group_member? @question.group
+        flash[:error] = "You can't view that group"
+        redirect_to :trending and return
+      end
+    end
+    
     # Get all the answers and sort them
     @answers = @question.answers.sort_by do |answer| 
       answer.votes.count

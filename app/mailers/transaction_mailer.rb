@@ -12,4 +12,19 @@ class TransactionMailer < MandrillMailer::TemplateMailer
       inline_css: true,
       async: true
   end
+  
+  def group_post(question, account)
+    mandrill_mail template: 'group_post',
+      to: {email: account.email, name: account.name},
+      vars: {
+        'ACCOUNT_NAME' => account.name,
+        'GROUP_NAME' => question.group.name,
+        'QUESTION_NAME' => question.account.name,
+        'QUESTION_ENTRY' => question.entry,
+        'QUESTION_URL' => question_show_url(question)
+      },
+      important: true,
+      inline_css: true,
+      async: true
+  end
 end

@@ -58,6 +58,10 @@ class Account < ActiveRecord::Base
     item.account == self
   end
   
+  def group_member?(group)
+    self.groups.where(id: group.id).count > 0
+  end
+  
   # Find if a user has voted
   def voted_on?(answer)
     has_voted = false

@@ -34,6 +34,11 @@ class GroupController < ApplicationController
   def show
     @group = Group.find(params[:id])
     
+    unless current_account.group_member? @group
+      flash[:error] = "You can't view that group"
+      redirect_to :trending and return
+    end
+    
     @question = Question.new
     @questions = @group.questions
     @questions = @questions.order("created_at desc").paginate({
