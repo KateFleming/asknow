@@ -1,5 +1,6 @@
 class AccountController < ApplicationController
   def panel
+    require_logged_in
     require_verified_account
     @account = current_account
     @questions = Question.where(account: @account).all.paginate(:page => params[:page])
