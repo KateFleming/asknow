@@ -13,7 +13,7 @@
       <% if defined? question_group %>
         <% placeholder = "Ask #{ question_group.name } something..." %>
       <% else %>
-        <% placeholder = "Ask anyone something..." %>
+        <% placeholder = "Ask anyone..." %>
       <% end %>
       <%= f.text_area :entry, class: "feed-question-field", title: placeholder, placeholder: placeholder %>
     </div>
@@ -23,6 +23,7 @@
       <% end %>
       <%= f.hidden_field :tags %>
       <div class="tag-bin"></div>
+      <%= '<p>You must login to submit an answer.</p>'.html_safe if current_account.guest? %>
       <%= f.submit "Ask Question", class: "feed-question-submit" %>
       <div class="character-counter"></div>
     </footer>

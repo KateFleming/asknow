@@ -56,15 +56,10 @@ class Ability
       end
       
       # Guests can view and post any other questions
-      can [:view, :create], Question
+      can [:view], Question
       
       # Guests can view any answer
       can :view, Answer
-      
-      # Guests can manage their own answers
-      can :manage, Answer do |answer|
-        account.owns?(answer)
-      end
       
       # Guests can manage their votes
       can :manage, Vote do |vote|

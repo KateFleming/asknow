@@ -56,6 +56,7 @@
         </div>
       <% end %>
       <%= f.text_field :entry, value: '', placeholder: "Suggest an Answer..." %>
+      <%= '<p>You must login to submit an answer.</p>'.html_safe if current_account.guest? %>
       <%= f.submit "Submit Answer" %>
     <% end %>
   </footer>

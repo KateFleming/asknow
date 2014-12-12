@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = "Fighting ninja chickens are keeping your from doing that."
-      redirect_to trending_path
+      redirect_to :back
   end
 end
