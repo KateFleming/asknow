@@ -7,12 +7,13 @@ class AnswerController < ApplicationController
     @answer.question = @question
     @answer.account = current_account
     
+    @answers = @question.answers
+    
     authorize! :create, @answer
     
     if @answer.save
       redirect_to question_show_path(params[:id])
     else
-      flash[:error] = "Could not save answer"
       render "question/show"
     end
     
