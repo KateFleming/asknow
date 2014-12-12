@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get    'account/verify/:code'     => 'account#verify', as: 'account_verify'
   post   'account/resend-code'      => 'account#resend_code', as: 'account_resend_code'
   
+  # Account settings
+  patch   'account_settings'       => 'account_settings#update', as: 'account_settings_update'
+  
   # Member
   get    'member/new'       => 'member#new', as: 'member_new'
   post   'member/new'       => 'member#create', as: 'member_create'

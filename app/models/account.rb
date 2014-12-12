@@ -12,6 +12,7 @@ class Account < ActiveRecord::Base
   has_many :votes
   has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members
+  has_one :account_settings
   
   ROLES = %w[admin member guest banned]
   
@@ -75,6 +76,10 @@ class Account < ActiveRecord::Base
   def generate_code
     salt = (0...8).map { (65 + rand(26)).chr }.join
     self.code = ::Digest::SHA2.new.hexdigest(email + salt)
+  end
+  
+  def settings
+    account_settings
   end
   
   private

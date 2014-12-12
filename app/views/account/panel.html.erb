@@ -13,5 +13,16 @@
         <li><%= link_to group.name, group_show_path(group.id) %></li>
       <% end %>
     </ul>
+    <div class="account-settings">
+      <h3>Settings</h3>
+      <%= form_for @account.settings, :url => :account_settings_update do |f| %>
+        <label>
+          <%= f.check_box :group_email_notifications %> Group email notifications
+        </label>
+        <div>
+          <%= f.submit "Save Settings" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </main>
