@@ -87,6 +87,23 @@ class GroupController < ApplicationController
     end
   end
   
+  def leave
+    @group = Group.find(params[:id])
+    
+    if current_account.group_member? @group
+      if @group.group_members.find_by(account: current_account).destroy
+        flash[:notice] = "You left #{@group.name}."
+        redirect_to :account_panel
+      else
+        flash[:error] = "Something went wrong and we couldn't delete you from that group."
+        redirect_to :back
+      end
+    else
+      flash[:error] = "Couldn't find that group."
+      redirect_to :back
+    end
+  end
+  
   private
   def group_params
     params.require(:group).permit(:name, :private, :default_permission)

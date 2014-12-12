@@ -10,6 +10,7 @@
   </main>
   <aside class="group-details">
     <h1><%= @group.name %></h1>
+    <div><%= link_to "Leave Group", group_leave_path(@group), :class => "leave-group", :method => "delete", :data => { confirm: "You sure you don't want to be a part of this group?" }%></div>
     <% if @group.account_permission(current_account).invite %>
       <p>Invite anyone to <%= @group.name %></p>
       <input type="text" class="auto-highlight" value="<%= group_invite_url(@group.invite_code) %>">

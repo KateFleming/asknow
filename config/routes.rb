@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   post   'group/create'       => 'group#create', as: 'group_create'
   get    'group/:id'          => 'group#show', as: 'group_show'
   get    '/i/:code'           => 'group#invite', as: 'group_invite'
+  delete 'group/:id/leave'    => 'group#leave', as: 'group_leave'
   
   # Static pages
   get   'privacy'   => 'static_pages#privacy', as: 'privacy'

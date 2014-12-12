@@ -1,5 +1,7 @@
 $(document).ready(function(){
-  $('.auto-highlight').focus(function(){
-    this.select();
+  $('.auto-highlight').mouseup(function(event){
+    event.preventDefault();
+  }).focus(function(){
+    $(this).select();
   });
 });
