@@ -39,6 +39,7 @@ module SessionHelper
     if defined? session[:routes][dest]
       fly_me_there = session[:routes][dest]
       if fly_me_there
+        session[:routes].delete [dest]
         redirect_to fly_me_there and return true
       end
     end

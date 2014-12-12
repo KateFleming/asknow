@@ -31,8 +31,9 @@ class QuestionController < ApplicationController
     
     if @question.group
       unless current_account.group_member? @question.group
-        flash[:error] = "You can't view that group"
-        redirect_to :trending and return
+        flash[:error] = "You need to login to see this question"
+        session[:routes] = { "login" => question_show_path(@question) }
+        redirect_to :session_login and return
       end
     end
     

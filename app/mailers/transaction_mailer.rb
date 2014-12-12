@@ -15,7 +15,8 @@ class TransactionMailer < MandrillMailer::TemplateMailer
   
   def group_post(question, account)
     mandrill_mail template: 'group_post',
-      to: {email: account.email, name: account.name},
+      subject: question.account.display_name + " asked a question",
+      to: {email: account.email, name: account.name },
       vars: {
         'ACCOUNT_NAME' => account.name,
         'GROUP_NAME' => question.group.name,
