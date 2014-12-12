@@ -50,5 +50,8 @@ Rails.application.routes.draw do
   get    'group/:id'          => 'group#show', as: 'group_show'
   get    '/i/:code'           => 'group#invite', as: 'group_invite'
   
+  # Static pages
+  get   'privacy'   => 'static_pages#privacy', as: 'privacy'
+  
   root   'landing#index'
 end
