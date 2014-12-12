@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211043714) do
+ActiveRecord::Schema.define(version: 20141212015219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20141211043714) do
   create_table "group_members", force: true do |t|
     t.integer  "group_id"
     t.integer  "account_id"
-    t.integer  "group_member_permission"
+    t.integer  "group_member_permission_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "owner"

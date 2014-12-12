@@ -20,7 +20,7 @@ GroupMemberPermission.create([
     powers: "can post",
     read: true,
     write: true,
-    invite: true,
+    invite: false,
     remove: false
   },{
     id: 3,

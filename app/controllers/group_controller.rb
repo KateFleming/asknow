@@ -18,7 +18,7 @@ class GroupController < ApplicationController
       })
       
       if group_member.save
-        flash[:notice] = "Hey look at you! You started a group."
+        flash[:notice] = "Sweet! You started the #{@group.name} group, now invite people."
         redirect_to group_show_path(@group.id)
       else
         flash[:error] = "Bummer, we had a problem saving the group"
