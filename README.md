@@ -1,7 +1,6 @@
 # AskNow
-[asknow.io](http://asknow.io)
 ======
-
+[asknow.io](http://asknow.io)
 
 ## Get real-time answers from real people.
 
