@@ -16,7 +16,31 @@ class QuestionController < ApplicationController
     @question.account = current_account
     
     authorize! :create, @question
+    
+    # Save the question
     if @question.save
+      
+      # Check if there's a group for this question
+      if @question.group
+        
+        # Go through each member and send emails to each
+        # with correct account settings
+        @question.group.accounts.each do |account|
+          # Don't send to the current account
+          if account != current_account
+            
+            # Create a mail item
+            mailer = TransactionMailer.group_post(@question, account)
+            
+            # Only send it if it's valid
+            if mailer
+              mailer.deliver
+            end
+          end
+        end
+      end
+      
+      # Redirect to the question
       redirect_to question_show_path(@question)
     else
       flash[:errors] = @question.errors.full_messages.join(", ")

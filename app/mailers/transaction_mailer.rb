@@ -14,18 +14,20 @@ class TransactionMailer < MandrillMailer::TemplateMailer
   end
   
   def group_post(question, account)
-    mandrill_mail template: 'group_post',
-      subject: question.account.display_name + " asked a question",
-      to: {email: account.email, name: account.name },
-      vars: {
-        'ACCOUNT_NAME' => account.name,
-        'GROUP_NAME' => question.group.name,
-        'QUESTION_NAME' => question.account.name,
-        'QUESTION_ENTRY' => question.entry,
-        'QUESTION_URL' => question_show_url(question)
-      },
-      important: true,
-      inline_css: true,
-      async: true
+    if account.settings.group_email_notifications
+      mandrill_mail template: 'group_post',
+        subject: question.account.display_name + " asked a question",
+        to: {email: account.email, name: account.name },
+        vars: {
+          'ACCOUNT_NAME' => account.name,
+          'GROUP_NAME' => question.group.name,
+          'QUESTION_NAME' => question.account.name,
+          'QUESTION_ENTRY' => question.entry,
+          'QUESTION_URL' => question_show_url(question)
+        },
+        important: true,
+        inline_css: true,
+        async: true
+    end
   end
 end

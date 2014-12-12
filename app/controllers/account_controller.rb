@@ -5,11 +5,6 @@ class AccountController < ApplicationController
     @account = current_account
     @questions = Question.where(account: @account).all.paginate(:page => params[:page])
     
-    # Create account settings if they don't exist
-    unless current_account.account_settings
-      AccountSettings.create(account: current_account)
-    end
-    
     authorize! :read, @account
   end
   

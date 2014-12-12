@@ -83,6 +83,10 @@ class Account < ActiveRecord::Base
   end
   
   def settings
+    # Create account settings if they don't exist
+    unless account_settings
+      AccountSettings.create(account: self)
+    end
     account_settings
   end
   
