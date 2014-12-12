@@ -62,6 +62,11 @@ class GroupController < ApplicationController
         session[:routes] = { "login" => group_invite_path(invite_code) }
         flash[:notice] = "To join #{ @group.name }, login or sign up."
         redirect_to :session_login
+      
+      # Are they already part of that group?
+      elsif current_account.group_member?(@group)
+        # Redirect to the group
+        redirect_to group_show_path(@group) and return
       else
         authorize! :join, @group
 
