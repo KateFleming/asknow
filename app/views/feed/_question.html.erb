@@ -17,11 +17,12 @@
         <a href="<%= vote_cast_path(answer.id) %>" data-method="post">
           <div class="counter <%= "answered" if current_account.voted_on?(answer) %>"><%= answer.votes.count %></div>
           <% entry = answer.entry %>
-          <div class="answer-entry"><%= entry.slice(0, 30) %><%= "..." if entry.size > 30 %></div>
+          <div class="answer-entry"><%= entry %></div>
         </a>
       </li>
     <% end %>
     <li class="suggest-answer">
+      <%= link_to "View Question", question_show_path(@question) %> &middot;
       <%= link_to "Suggest an Answer...", question_show_path(@question) %>
     </li>
   </ul>
